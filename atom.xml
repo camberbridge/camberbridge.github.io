@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   
-  <title><![CDATA[Hexo]]></title>
-  
+  <title><![CDATA[ヨセミテ国立公園へ行きたい。]]></title>
+  <subtitle><![CDATA[Webまわりのいろいろなことを試してそれを公開してみるページ]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://yoursite.com//"/>
+  <link href="http://camberbridge.github.io//"/>
   <updated>2015-08-10T03:13:26.000Z</updated>
-  <id>http://yoursite.com//</id>
+  <id>http://camberbridge.github.io//</id>
   
   <author>
-    <name><![CDATA[John Doe]]></name>
+    <name><![CDATA[UEC_Abe]]></name>
     
   </author>
   
@@ -17,8 +17,8 @@
   
   <entry>
     <title><![CDATA[Hexo始めた]]></title>
-    <link href="http://yoursite.com/2015/08/09/Hexo%E5%A7%8B%E3%82%81%E3%81%9F/"/>
-    <id>http://yoursite.com/2015/08/09/Hexo始めた/</id>
+    <link href="http://camberbridge.github.io/2015/08/09/Hexo%E5%A7%8B%E3%82%81%E3%81%9F/"/>
+    <id>http://camberbridge.github.io/2015/08/09/Hexo始めた/</id>
     <published>2015-08-09T09:46:00.000Z</published>
     <updated>2015-08-10T03:13:26.000Z</updated>
     <content type="html"><![CDATA[<ul><br>  <li>hexoとは<br>  静的サイトジェネレータの1つ<br>  読み方分からん<br>  </li><br>  <li>シンタックス<br>  <a href="http://qiita.com" target="_blank" rel="external">Qiita</a>のようにシンタックスハイライトされる<br>  </li><br>  <li>手順<br>    <ol><br>      <li> ブログ生成<br>      <code>$ hexo new “hoge”</code><br>      source/_posts 配下に .md ファイルが生成される<br>      </li><br>      <li>ローカル環境でサーバ起動して確認<br>      <code>$ hexo server</code><br>      </li><br>      <li>デプロイ<br>      <code>$ hexo deploy -g</code><br>      これは generate の役目も担う<br>      </li><br>    </ol><br>  </li><br></ul>
@@ -27,7 +27,7 @@
     <![CDATA[<ul><br>  <li>hexoとは<br>  静的サイトジェネレータの1つ<br>  読み方分からん<br>  </li><br>  <li>シンタックス<br>  <a href="http://qiita.com" target="_blank" rel="extern]]>
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://camberbridge.github.io/tags/hexo/"/>
     
   </entry>
   
