@@ -25,7 +25,7 @@ window.addEventListener(&quot;DOMContentLoaded&quot;,function(){
 window.addEventListener(&quot;DOMContentLoaded&quot;,function(){
     //表示領域の確保(HTMLに)
     v">
-<meta property="og:updated_time" content="2015-08-10T11:42:34.000Z">
+<meta property="og:updated_time" content="2015-08-10T11:45:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Three.jsを使ってみた">
 <meta name="twitter:description" content="Three.jsとは    WebGLをサポートした3次元CGを描画するためのライブラリ    取得はこちらから    参考          three.js/docs      THREE.jsでWebGL      
@@ -154,30 +154,13 @@ window.addEventListener("DOMContentLoaded",function(){
     renderer.render(scene, camera);
 
     //アニメーション
-    var theta = 0, rgbR = 0, rgbG = 0, rgbB = 0;
+    var theta = 0;
+    //rgbR = 0, rgbG = 0, rgbB = 0;
     var rotate = function(){
         theta += 0.01;
         theta %= 2 * Math.PI;
-        if(rgbR < 255){
-          rgbR += 0.01;
-        }
-    if(rgbR >= 255){
-          rgbR = 0;
-        }
-        if(rgbG < 255){
-          rgbG += 0.02;
-        }
-    if(rgbG >= 255){
-          rgbG = 0;
-        }
-        if(rgbB < 255){
-          rgbB += 0.03;
-        }
-    if(rgbB >= 255){
-          rgbB = 0;
-        }
         mesh.rotation.y = theta;
-        material.color.setRGB(rgbR, rgbG, rgbB);
+        //material.color.setRGB(rgbR, rgbG, rgbB);
         renderer.render(scene, camera);
         requestAnimationFrame(rotate);
     };

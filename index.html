@@ -137,30 +137,13 @@ window.addEventListener("DOMContentLoaded",function(){
     renderer.render(scene, camera);
 
     //アニメーション
-    var theta = 0, rgbR = 0, rgbG = 0, rgbB = 0;
+    var theta = 0;
+    //rgbR = 0, rgbG = 0, rgbB = 0;
     var rotate = function(){
         theta += 0.01;
         theta %= 2 * Math.PI;
-        if(rgbR < 255){
-          rgbR += 0.01;
-        }
-    if(rgbR >= 255){
-          rgbR = 0;
-        }
-        if(rgbG < 255){
-          rgbG += 0.02;
-        }
-    if(rgbG >= 255){
-          rgbG = 0;
-        }
-        if(rgbB < 255){
-          rgbB += 0.03;
-        }
-    if(rgbB >= 255){
-          rgbB = 0;
-        }
         mesh.rotation.y = theta;
-        material.color.setRGB(rgbR, rgbG, rgbB);
+        //material.color.setRGB(rgbR, rgbG, rgbB);
         renderer.render(scene, camera);
         requestAnimationFrame(rotate);
     };
