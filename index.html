@@ -90,7 +90,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul><br>  <li>Three.jsとは<br>    WebGLをサポートした3次元CGを描画するためのライブラリ<br>    取得は<a href="https://github.com/mrdoob/three.js/" target="_blank" rel="external">こちらから</a><br>  </li><br>  <li>参考</li><br>  <ul><br>    <li><a href="http://threejs.org/docs/" target="_blank" rel="external">three.js/docs</a></li><br>    <li><a href="http://www.yomotsu.net/wp/?p=597" target="_blank" rel="external">THREE.jsでWebGL</a></li><br>  </ul><br></ul>
+        <ul><br>  <li>Three.jsとは<br>    WebGLをサポートした3次元CGを描画するためのライブラリ<br>    取得は<a href="https://github.com/mrdoob/three.js/" target="_blank" rel="external">こちらから</a><br>  </li><br>  <li>参考<br>    <ul><br>      <li><a href="http://threejs.org/docs/" target="_blank" rel="external">three.js/docs</a></li><br>      <li><a href="http://www.yomotsu.net/wp/?p=597" target="_blank" rel="external">THREE.jsでWebGL</a></li><br>    </ul><br>  </li><br></ul>
 
 <p></p><h3 id="exe-result">実行結果</h3><p></p>
 <script>
@@ -143,17 +143,17 @@ window.addEventListener("DOMContentLoaded",function(){
         theta %= 2 * Math.PI;
         if(rgbR < 255){
           rgbR += 0.01;
-        }else if(rgbR == 255){
+        }else if(rgbR <= 255){
           rgbR = 0;
         }
         if(rgbG < 255){
           rgbG += 0.02;
-        }else if(rgbG == 255){
+        }else if(rgbG <= 255){
           rgbG = 0;
         }
         if(rgbB < 255){
           rgbB += 0.03;
-        }else if(rgbB == 255){
+        }else if(rgbB <= 255){
           rgbB = 0;
         }
         mesh.rotation.y = theta;
