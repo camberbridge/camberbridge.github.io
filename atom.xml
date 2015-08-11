@@ -5,7 +5,7 @@
   <subtitle><![CDATA[Webまわりのいろいろなことを試してそれを公開してみるページ]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://camberbridge.github.io//"/>
-  <updated>2015-08-10T11:52:52.000Z</updated>
+  <updated>2015-08-11T03:37:03.000Z</updated>
   <id>http://camberbridge.github.io//</id>
   
   <author>
@@ -20,8 +20,8 @@
     <link href="http://camberbridge.github.io/2015/08/10/Three-js%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/"/>
     <id>http://camberbridge.github.io/2015/08/10/Three-jsを使ってみた/</id>
     <published>2015-08-10T06:24:40.000Z</published>
-    <updated>2015-08-10T11:52:52.000Z</updated>
-    <content type="html"><![CDATA[<ul><br>  <li>Three.jsとは<br>    WebGLをサポートした3次元CGを描画するためのライブラリ<br>    取得は<a href="https://github.com/mrdoob/three.js/" target="_blank" rel="external">こちらから</a><br>  </li><br>  <li>参考<br>    <ul><br>      <li><a href="http://threejs.org/docs/" target="_blank" rel="external">three.js/docs</a></li><br>      <li><a href="http://www.yomotsu.net/wp/?p=597" target="_blank" rel="external">THREE.jsでWebGL</a></li><br>    </ul><br>  </li><br></ul>
+    <updated>2015-08-11T03:37:03.000Z</updated>
+    <content type="html"><![CDATA[<ul><br>  <li>Three.jsとは<br>    WebGLをサポートした3次元CGを描画するためのライブラリ<br>    取得は<a href="https://github.com/mrdoob/three.js/" target="_blank" rel="external">ここ</a><br>  </li><br>  <li>参考<br>    <ul><br>      <li><a href="http://threejs.org/docs/" target="_blank" rel="external">three.js/docs</a></li><br>      <li><a href="http://www.yomotsu.net/wp/?p=597" target="_blank" rel="external">THREE.jsでWebGL</a></li><br>    </ul><br>  </li><br></ul>
 
 <p></p><h3 id="exe-result">実行結果</h3><p></p>
 <script>
@@ -69,12 +69,43 @@ window.addEventListener("DOMContentLoaded",function(){
 
     //アニメーション
     var theta = 0;
-    //var rgbR = 0, rgbG = 0, rgbB = 0;
+    var rgbR = 0, rgbG = 0, rgbB = 0;
+    var evalR = true, evalG = true, evalB = true;
     var rotate = function(){
         theta += 0.01;
         theta %= 2 * Math.PI;
         mesh.rotation.y = theta;
-        //material.color.setRGB(rgbR, rgbG, rgbB);
+    if(evalR == true){
+      rgbR += 0.01;
+    }else if(evalR == false){
+      rgbR -= 0.01;
+    }
+        if(rgbR == 1){
+          evalR = false;
+        }else if(rgbR == 0){
+      evalR = true;
+    }
+        if(evalG == true){
+          rgbG += 0.02;
+        }else if(evalG == false){
+          rgbG -= 0.02;
+        }
+        if(rgbG >= 1){
+          evalG = false;
+        }else if(rgbG <= 0){
+          evalG = true;
+        }
+        if(evalB == true){
+          rgbB += 0.03;
+        }else if(evalB == false){
+          rgbB -= 0.03;
+        }
+        if(rgbB >= 1){
+          evalB = false;
+        }else if(rgbB <= 0){
+          evalB = true;
+        }
+        material.color.setRGB(rgbR, rgbG, rgbB);
         renderer.render(scene, camera);
         requestAnimationFrame(rotate);
     };
