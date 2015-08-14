@@ -6,16 +6,26 @@
   <meta name="viewport" content="width=device-width" />
   <meta name="format-detection" content="telephone=no" />
   
-  <title>ヨセミテ国立公園へ行きたい。</title>
-  <meta name="description" content="Webまわりのいろいろなことを試してそれを公開してみるページ.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ヨセミテ国立公園へ行きたい。">
-<meta property="og:url" content="http://camberbridge.github.io/index.html">
+  <title>FirefoxAdd-onの開発着手 | ヨセミテ国立公園へ行きたい。</title>
+  <meta name="description" content="Widgetモジュールの使用は非推奨となっていた– uiモジュールを使うように
+モジュールのパス指定はsdk/から始めるように(省略すると実行時にwarningが出る)
+
+下記はブラウザのメニューバーにアイコンを追加し, それをクリックすると新しいタブを開いてモジラのページへジャンプするコード1234567891011121314151617var buttons = require(&apos;sdk/u">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FirefoxAdd-onの開発着手">
+<meta property="og:url" content="http://camberbridge.github.io/2015/08/14/FirefoxAdd-onの開発着手/index.html">
 <meta property="og:site_name" content="ヨセミテ国立公園へ行きたい。">
-<meta property="og:description" content="Webまわりのいろいろなことを試してそれを公開してみるページ.">
+<meta property="og:description" content="Widgetモジュールの使用は非推奨となっていた– uiモジュールを使うように
+モジュールのパス指定はsdk/から始めるように(省略すると実行時にwarningが出る)
+
+下記はブラウザのメニューバーにアイコンを追加し, それをクリックすると新しいタブを開いてモジラのページへジャンプするコード1234567891011121314151617var buttons = require(&apos;sdk/u">
+<meta property="og:updated_time" content="2015-08-14T08:19:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ヨセミテ国立公園へ行きたい。">
-<meta name="twitter:description" content="Webまわりのいろいろなことを試してそれを公開してみるページ.">
+<meta name="twitter:title" content="FirefoxAdd-onの開発着手">
+<meta name="twitter:description" content="Widgetモジュールの使用は非推奨となっていた– uiモジュールを使うように
+モジュールのパス指定はsdk/から始めるように(省略すると実行時にwarningが出る)
+
+下記はブラウザのメニューバーにアイコンを追加し, それをクリックすると新しいタブを開いてモジラのページへジャンプするコード1234567891011121314151617var buttons = require(&apos;sdk/u">
   
     <link rel="alternative" href="/atom.xml" title="ヨセミテ国立公園へ行きたい。" type="application/atom+xml">
   
@@ -66,9 +76,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-FirefoxAdd-onの開発着手" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-FirefoxAdd-onの開発着手" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/08/14/FirefoxAdd-onの開発着手/" class="article-date">
   <time datetime="2015-08-14T07:54:48.000Z" itemprop="datePublished">2015-08-14</time>
@@ -81,8 +89,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/14/FirefoxAdd-onの開発着手/">FirefoxAdd-onの開発着手</a>
+    <h1 class="article-title" itemprop="name">
+      FirefoxAdd-onの開発着手
     </h1>
   
 
@@ -107,179 +115,20 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Three-jsを使ってみた" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/10/Three-jsを使ってみた/" class="article-date">
-  <time datetime="2015-08-10T06:24:40.000Z" itemprop="datePublished">2015-08-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/10/Three-jsを使ってみた/">Three.jsを使ってみた</a>
-    </h1>
+    <a href="/2015/08/10/Three-jsを使ってみた/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Three.jsを使ってみた</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul><br>  <li>Three.jsとは<br>    WebGLをサポートした3次元CGを描画するためのライブラリ<br>    取得は<a href="https://github.com/mrdoob/three.js/" target="_blank" rel="external">ここ</a><br>  </li><br>  <li>参考<br>    <ul><br>      <li><a href="http://threejs.org/docs/" target="_blank" rel="external">three.js/docs</a></li><br>      <li><a href="http://www.yomotsu.net/wp/?p=597" target="_blank" rel="external">THREE.jsでWebGL</a></li><br>    </ul><br>  </li><br></ul>
-
-<p></p><h3 id="exe-result">実行結果</h3><p></p>
-<script>
-window.addEventListener("DOMContentLoaded",function(){
-    //表示領域の確保(HTMLに)
-    var width = "300px";
-    var height = "300px";
-    var container = document.createElement("div");
-    //h3内にdiv生成
-    document.getElementById("exe-result").appendChild(container);
-    container.style.width = width;
-    container.style.height = height;
-
-    //レンダラ生成
-    var cWidth = container.offsetWidth;
-    var cHeight = container.offsetHeight;
-    var renderer = new THREE.WebGLRenderer({alpha: true, antialias: true});
-    renderer.setSize(cWidth, cHeight);
-    renderer.setClearColor(0xffffff, 1);
-    //生成したdiv内にレンダラが持つDOM要素を追加
-    container.appendChild(renderer.domElement);
-
-    //シーン生成
-    var scene = new THREE.Scene();
-
-    //カメラ生成
-    var angle = 20;
-    var near = 1;
-    var far = 10000;
-    var aspect = cWidth/cHeight;
-    var camera = new THREE.PerspectiveCamera(angle, aspect, near, far);
-    camera.position.set(0, 500, 1000);
-    camera.lookAt({x:0, y:0, z:0});
-
-    //表示する物体生成
-    var geometry = new THREE.SphereGeometry(150, 20, 20);
-    var material = new THREE.MeshBasicMaterial({color: 0x0000ff, wireframe: true});
-    var mesh = new THREE.Mesh(geometry, material);
-
-    //シーンに物体追加
-    scene.add(mesh);
-
-    //レンダリング
-    renderer.render(scene, camera);
-
-    //アニメーション
-    var theta = 0;
-    var rgbR = 0, rgbG = 0, rgbB = 0;
-    var evalR = true, evalG = true, evalB = true;
-    var rotate = function(){
-        theta += 0.01;
-        theta %= 2 * Math.PI;
-        mesh.rotation.y = theta;
-    if(evalR == true){
-      rgbR += 0.01;
-    }else if(evalR == false){
-      rgbR -= 0.01;
-    }
-        if(rgbR == 1){
-          evalR = false;
-        }else if(rgbR == 0){
-      evalR = true;
-    }
-        if(evalG == true){
-          rgbG += 0.02;
-        }else if(evalG == false){
-          rgbG -= 0.02;
-        }
-        if(rgbG >= 1){
-          evalG = false;
-        }else if(rgbG <= 0){
-          evalG = true;
-        }
-        if(evalB == true){
-          rgbB += 0.03;
-        }else if(evalB == false){
-          rgbB -= 0.03;
-        }
-        if(rgbB >= 1){
-          evalB = false;
-        }else if(rgbB <= 0){
-          evalB = true;
-        }
-        material.color.setRGB(rgbR, rgbG, rgbB);
-        renderer.render(scene, camera);
-        requestAnimationFrame(rotate);
-    };
-    rotate();
-});
-</script>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://camberbridge.github.io/2015/08/10/Three-jsを使ってみた/" data-id="cidbcs4hh0003nmwkenig3mm7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Three-js/">Three.js</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
-
-  
-    <article id="post-Hexo始めた" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/09/Hexo始めた/" class="article-date">
-  <time datetime="2015-08-09T09:46:00.000Z" itemprop="datePublished">2015-08-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/09/Hexo始めた/">Hexo始めた</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul><br>  <li>hexoとは<br>  静的サイトジェネレータの1つ<br>  読み方分からん<br>  </li><br>  <li>シンタックス<br>  <a href="http://qiita.com" target="_blank" rel="external">Qiita</a>のようにシンタックスハイライトされる<br>  </li><br>  <li>手順<br>    <ol><br>      <li> ブログ生成<br>      <code>$ hexo new “hoge”</code><br>      source/_posts 配下に .md ファイルが生成される<br>      </li><br>      <li>ローカル環境でサーバ起動して確認<br>      <code>$ hexo server</code><br>      </li><br>      <li>デプロイ<br>      <code>$ hexo deploy -g</code><br>      これは generate の役目も担う<br>      </li><br>    </ol><br>  </li><br></ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://camberbridge.github.io/2015/08/09/Hexo始めた/" data-id="cidbcs4hm0006nmwkijv8prfg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-  
 </section>
         
           <aside id="sidebar">

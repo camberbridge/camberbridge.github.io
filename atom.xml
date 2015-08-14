@@ -5,7 +5,7 @@
   <subtitle><![CDATA[Webまわりのいろいろなことを試してそれを公開してみるページ]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://camberbridge.github.io//"/>
-  <updated>2015-08-11T03:37:03.000Z</updated>
+  <updated>2015-08-14T08:19:50.000Z</updated>
   <id>http://camberbridge.github.io//</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[FirefoxAdd-onの開発着手]]></title>
+    <link href="http://camberbridge.github.io/2015/08/14/FirefoxAdd-on%E3%81%AE%E9%96%8B%E7%99%BA%E7%9D%80%E6%89%8B/"/>
+    <id>http://camberbridge.github.io/2015/08/14/FirefoxAdd-onの開発着手/</id>
+    <published>2015-08-14T07:54:48.000Z</published>
+    <updated>2015-08-14T08:19:50.000Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li>Widgetモジュールの使用は非推奨となっていた<br>– uiモジュールを使うように</li>
+<li>モジュールのパス指定はsdk/から始めるように(省略すると実行時にwarningが出る)</li>
+</ul>
+<p>下記はブラウザのメニューバーにアイコンを追加し, それをクリックすると新しいタブを開いてモジラのページへジャンプするコード<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buttons = <span class="built_in">require</span>(<span class="string">'sdk/ui/button/action'</span>);</span><br><span class="line"><span class="keyword">var</span> tabs = <span class="built_in">require</span>(<span class="string">"sdk/tabs"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> button = buttons.ActionButton(&#123;</span><br><span class="line">  id: <span class="string">"mozilla-link"</span>,</span><br><span class="line">  label: <span class="string">"Visit Mozilla"</span>,</span><br><span class="line">  icon: &#123;</span><br><span class="line">    <span class="string">"16"</span>: <span class="string">"./icon-16.png"</span>,</span><br><span class="line">    <span class="string">"32"</span>: <span class="string">"./icon-32.png"</span>,</span><br><span class="line">    <span class="string">"64"</span>: <span class="string">"./icon-64.png"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  onClick: handleClick</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">  tabs.open(<span class="string">"https://www.mozilla.org/"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<ul>
+<li>Widgetモジュールの使用は非推奨となっていた<br>– uiモジュールを使うように</li>
+<li>モジュールのパス指定はsdk/から始めるように(省略すると実行時にwarningが出る)</li>
+</ul>
+<p>下記はブラウザのメニューバーにアイコン]]>
+    </summary>
+    
+      <category term="アドオン" scheme="http://camberbridge.github.io/tags/%E3%82%A2%E3%83%89%E3%82%AA%E3%83%B3/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Three.jsを使ってみた]]></title>
