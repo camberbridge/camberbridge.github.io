@@ -5,7 +5,7 @@
   <subtitle><![CDATA[Webまわりのいろいろなことを試してそれを公開してみるページ]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://camberbridge.github.io//"/>
-  <updated>2015-08-14T08:19:50.000Z</updated>
+  <updated>2015-09-25T13:37:19.000Z</updated>
   <id>http://camberbridge.github.io//</id>
   
   <author>
@@ -14,6 +14,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[アドオンスクリプトから外部WebAPIをたたく]]></title>
+    <link href="http://camberbridge.github.io/2015/09/25/%E3%82%A2%E3%83%88%E3%82%99%E3%82%AA%E3%83%B3%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%95%E3%82%9A%E3%83%88%E3%81%8B%E3%82%89%E5%A4%96%E9%83%A8WebAPI%E3%82%92%E3%81%9F%E3%81%9F%E3%81%8F/"/>
+    <id>http://camberbridge.github.io/2015/09/25/アドオンスクリプトから外部WebAPIをたたく/</id>
+    <published>2015-09-25T13:13:06.000Z</published>
+    <updated>2015-09-25T13:37:19.000Z</updated>
+    <content type="html"><![CDATA[<ul>
+<li>Firefox Add-on のアドオンスクリプトから外部WebAPIをたたくには(クロスドメイン制約やらの問題を配慮して)XMLHTTPRequestではHTTP通信ができなくなっている.<br>– XMLHTTPRequestがラッパされているAdd-on SDK提供のrequestモジュールを使えばHTTP通信ができる. 下記例.</li>
+</ul>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var <span class="built_in">Request</span> = require(<span class="string">"sdk/request"</span>).<span class="built_in">Request</span>;</span><br><span class="line">var quijote = <span class="built_in">Request</span>(&#123;</span><br><span class="line">  url: <span class="string">"URL"</span>,</span><br><span class="line">  overrideMimeType: <span class="string">"text/plain; charset=latin1"</span>,</span><br><span class="line">  onComplete: <span class="keyword">function</span> (<span class="built_in">response</span>) &#123;</span><br><span class="line">    console.<span class="built_in">log</span>(<span class="built_in">response</span>.text);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">quijote.<span class="keyword">get</span>();</span><br></pre></td></tr></table></figure>
+<p>– ちなみにレスポンスで受ける文字列が化けるのでcharsetはutf-8にするといい</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<ul>
+<li>Firefox Add-on のアドオンスクリプトから外部WebAPIをたたくには(クロスドメイン制約やらの問題を配慮して)XMLHTTPRequestではHTTP通信ができなくなっている.<br>– XMLHTTPRequestがラッパされているAdd-on ]]>
+    </summary>
+    
+      <category term="WebAPI" scheme="http://camberbridge.github.io/tags/WebAPI/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[FirefoxAdd-onの開発着手]]></title>

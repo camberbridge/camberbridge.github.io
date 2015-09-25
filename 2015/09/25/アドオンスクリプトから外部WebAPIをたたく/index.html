@@ -6,16 +6,23 @@
   <meta name="viewport" content="width=device-width" />
   <meta name="format-detection" content="telephone=no" />
   
-  <title>Tag: アドオン | ヨセミテ国立公園へ行きたい。</title>
-  <meta name="description" content="Webまわりのいろいろなことを試してそれを公開してみるページ.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ヨセミテ国立公園へ行きたい。">
-<meta property="og:url" content="http://camberbridge.github.io/tags/アドオン/index.html">
+  <title>アドオンスクリプトから外部WebAPIをたたく | ヨセミテ国立公園へ行きたい。</title>
+  <meta name="description" content="Firefox Add-on のアドオンスクリプトから外部WebAPIをたたくには(クロスドメイン制約やらの問題を配慮して)XMLHTTPRequestではHTTP通信ができなくなっている.– XMLHTTPRequestがラッパされているAdd-on SDK提供のrequestモジュールを使えばHTTP通信ができる. 下記例.
+
+12345678910var Request = require(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="アドオンスクリプトから外部WebAPIをたたく">
+<meta property="og:url" content="http://camberbridge.github.io/2015/09/25/アドオンスクリプトから外部WebAPIをたたく/index.html">
 <meta property="og:site_name" content="ヨセミテ国立公園へ行きたい。">
-<meta property="og:description" content="Webまわりのいろいろなことを試してそれを公開してみるページ.">
+<meta property="og:description" content="Firefox Add-on のアドオンスクリプトから外部WebAPIをたたくには(クロスドメイン制約やらの問題を配慮して)XMLHTTPRequestではHTTP通信ができなくなっている.– XMLHTTPRequestがラッパされているAdd-on SDK提供のrequestモジュールを使えばHTTP通信ができる. 下記例.
+
+12345678910var Request = require(">
+<meta property="og:updated_time" content="2015-09-25T13:37:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ヨセミテ国立公園へ行きたい。">
-<meta name="twitter:description" content="Webまわりのいろいろなことを試してそれを公開してみるページ.">
+<meta name="twitter:title" content="アドオンスクリプトから外部WebAPIをたたく">
+<meta name="twitter:description" content="Firefox Add-on のアドオンスクリプトから外部WebAPIをたたくには(クロスドメイン制約やらの問題を配慮して)XMLHTTPRequestではHTTP通信ができなくなっている.– XMLHTTPRequestがラッパされているAdd-on SDK提供のrequestモジュールを使えばHTTP通信ができる. 下記例.
+
+12345678910var Request = require(">
   
     <link rel="alternative" href="/atom.xml" title="ヨセミテ国立公園へ行きたい。" type="application/atom+xml">
   
@@ -66,39 +73,59 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/08/14/FirefoxAdd-onの開発着手/" class="archive-article-date">
-  <time datetime="2015-08-14T07:54:48.000Z" itemprop="datePublished">8月 14</time>
+        <section id="main"><article id="post-アドオンスクリプトから外部WebAPIをたたく" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/25/アドオンスクリプトから外部WebAPIをたたく/" class="article-date">
+  <time datetime="2015-09-25T13:13:06.000Z" itemprop="datePublished">2015-09-25</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/14/FirefoxAdd-onの開発着手/">FirefoxAdd-onの開発着手</a>
+    <h1 class="article-title" itemprop="name">
+      アドオンスクリプトから外部WebAPIをたたく
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>Firefox Add-on のアドオンスクリプトから外部WebAPIをたたくには(クロスドメイン制約やらの問題を配慮して)XMLHTTPRequestではHTTP通信ができなくなっている.<br>– XMLHTTPRequestがラッパされているAdd-on SDK提供のrequestモジュールを使えばHTTP通信ができる. 下記例.</li>
+</ul>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var <span class="built_in">Request</span> = require(<span class="string">"sdk/request"</span>).<span class="built_in">Request</span>;</span><br><span class="line">var quijote = <span class="built_in">Request</span>(&#123;</span><br><span class="line">  url: <span class="string">"URL"</span>,</span><br><span class="line">  overrideMimeType: <span class="string">"text/plain; charset=latin1"</span>,</span><br><span class="line">  onComplete: <span class="keyword">function</span> (<span class="built_in">response</span>) &#123;</span><br><span class="line">    console.<span class="built_in">log</span>(<span class="built_in">response</span>.text);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">quijote.<span class="keyword">get</span>();</span><br></pre></td></tr></table></figure>
+<p>– ちなみにレスポンスで受ける文字列が化けるのでcharsetはutf-8にするといい</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://camberbridge.github.io/2015/09/25/アドオンスクリプトから外部WebAPIをたたく/" data-id="ciezose3h0003u1wk2l6lgtjq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebAPI/">WebAPI</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/08/14/FirefoxAdd-onの開発着手/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">FirefoxAdd-onの開発着手</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
 </section>
         
           <aside id="sidebar">
