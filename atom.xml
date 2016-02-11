@@ -5,7 +5,7 @@
   <subtitle><![CDATA[Webまわりのいろいろなことを試してそれを公開してみるページ]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://camberbridge.github.io//"/>
-  <updated>2016-02-11T07:24:47.000Z</updated>
+  <updated>2016-02-11T07:28:47.000Z</updated>
   <id>http://camberbridge.github.io//</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="http://camberbridge.github.io/2016/02/11/%E3%83%88%E3%83%94%E3%83%83%E3%82%AF%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E5%AE%9F%E9%A8%93/"/>
     <id>http://camberbridge.github.io/2016/02/11/トピックモデルの実験/</id>
     <published>2016-02-11T07:24:48.000Z</published>
-    <updated>2016-02-11T07:24:47.000Z</updated>
+    <updated>2016-02-11T07:28:47.000Z</updated>
     <content type="html"><![CDATA[<h2 id="概要">概要</h2><p>トピックモデルとは, 文書集合から特徴(話題)を抽出する手法です. また, それぞれの文書が持つ話題を抽出したり, 文書間の類似性を抽出することが可能な手法です.<br>そこで今回は, トピックモデルを用いてニュース記事を対象に話題を抽出する実験を行ってみます. なお, トピックモデルの中でも特に潜在意味解析(latent semantic analysis, LSA)を実際に用いています(正確には, LSAはベクトル空間モデルであり, このLSAを確率モデルに拡張した確率的潜在意味解析がトピックモデルです. しかし, トピックモデルのカテゴリ(離散値確率)分布は, LSAで用いる行列分解手法として捉えることができるので, 僕は同じ物として扱っています). </p>
 <h3 id="潜在意味解析(latent_semantic_analysis,_LSA)">潜在意味解析(latent semantic analysis, LSA)</h3><p>LSAは, 文書集合データを(文書総数 x 単語数)の行列Nで表現したときに, 掛け合わせることで再び元の行列を構築できるような, 小さな(低ランクの)2つの行列を見つけることをします(これを非負値行列因子分解と言います). このとき, それぞれの行列は特徴の組み合わせで構築されているため, この特徴を用いることによって文書に潜在するトピック(文書を特徴づける単語)を抽出します. </p>
 <h3 id="非負値行列因子分解(nonnegative_matrix_factorization,_NMF)">非負値行列因子分解(nonnegative matrix factorization, NMF)</h3><p>NMFとは, 行列で表現した文字・画像・音声などのデータ(非負値行列)を指定する基底数に行列分解し, 低ランクの表現にすることによって, それぞれの行列が持つ潜在的な特徴を抽出することを可能にした行列低ランク近似手法です. 簡単に言えば, 非負値行列を2つの非負値行列に分解するアルゴリズムです. 以下, NMFについて詳細に説明します. </p>
-<p>図1に示すように, 文書集合データを(D x V)の行列Nで表現するとします. ここでDは文書総数, Vは単語数です.<br><img src="../imgs/nmf.png" alt="図1 NMF"><br>このNを分解すると, W(K x D)の基底行列とH(K x V)の特徴重みの行列となります. そしてこれらWとHを掛け合わせることにより, 元の行列Nの近似値が得られますが, 完全に一致する行列W, Hの値を求めるのは困難です. </p>
-<p>そこで, この近似値を求める問題は, 行列Nと転置したWにHを掛け合わせた行列の距離を小さくする問題として扱うことができます. 具体的には, フロベニウスノルムの最小化を行います(図2).<br><img src="../imgs/frobenius_norm.png" alt="図2 フロベニウスノルムの最小化"><br>フロベニウスノルムの最小化問題には, 模擬アニーリングや勾配降下法, 乗法的更新ルールなど, いくつかの数学的解法が提案されていますが, NMFで最も用いられる解法は乗法的更新ルールです(<a href="https://docs.google.com/viewer?a=v&amp;pid=sites&amp;srcid=ZGVmYXVsdGRvbWFpbnx0aGVzaXNvbnN0b2NrbWluaW5nfGd4OjQ5OThmZTE0NThhZTE5ODc" target="_blank" rel="external">参考論文</a>).<br>乗法的更新ルールの式を図3に示します.<br><img src="../imgs/jyohotekikoushinrule.png" alt="図3 乗法的更新ルールの式"><br>そして, フロベニウスノルムの最小化問題を解くために, NMFでは行列WとHをランダムな値で初期化し, 乗法的更新ルールの式にしたがってWとHを更新して距離が収束するまでこの処理を繰り返します. NMFはこのようにして行列の低ランク近似を行います. </p>
+<p>図1に示すように, 文書集合データを(D x V)の行列Nで表現するとします. ここでDは文書総数, Vは単語数です.<br><img src="http://camberbridge.github.io/imgs/nmf.png" alt="図1 NMF"><br>このNを分解すると, W(K x D)の基底行列とH(K x V)の特徴重みの行列となります. そしてこれらWとHを掛け合わせることにより, 元の行列Nの近似値が得られますが, 完全に一致する行列W, Hの値を求めるのは困難です. </p>
+<p>そこで, この近似値を求める問題は, 行列Nと転置したWにHを掛け合わせた行列の距離を小さくする問題として扱うことができます. 具体的には, フロベニウスノルムの最小化を行います(図2).<br><img src="http://camberbridge.github.io/imgs/frobenius_norm.png" alt="図2 フロベニウスノルムの最小化"><br>フロベニウスノルムの最小化問題には, 模擬アニーリングや勾配降下法, 乗法的更新ルールなど, いくつかの数学的解法が提案されていますが, NMFで最も用いられる解法は乗法的更新ルールです(<a href="https://docs.google.com/viewer?a=v&amp;pid=sites&amp;srcid=ZGVmYXVsdGRvbWFpbnx0aGVzaXNvbnN0b2NrbWluaW5nfGd4OjQ5OThmZTE0NThhZTE5ODc" target="_blank" rel="external">参考論文</a>).<br>乗法的更新ルールの式を図3に示します.<br><img src="http://camberbridge.github.io/imgs/jyohotekikoushinrule.png" alt="図3 乗法的更新ルールの式"><br>そして, フロベニウスノルムの最小化問題を解くために, NMFでは行列WとHをランダムな値で初期化し, 乗法的更新ルールの式にしたがってWとHを更新して距離が収束するまでこの処理を繰り返します. NMFはこのようにして行列の低ランク近似を行います. </p>
 <hr>
 <h2 id="方針">方針</h2><ul>
 <li>ニュース記事を文書として, 大量の文書から話題になっているトピックを抽出します. さらに, 話題になっているトピックを持つ文書を抽出します. </li>
