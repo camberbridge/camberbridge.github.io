@@ -5,7 +5,7 @@
   <subtitle><![CDATA[Webまわりのいろいろなことを試してそれを公開してみるページ]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://camberbridge.github.io//"/>
-  <updated>2016-02-12T00:16:04.000Z</updated>
+  <updated>2016-03-03T09:01:36.000Z</updated>
   <id>http://camberbridge.github.io//</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[TensorFlowでRNNのPTB LSTM model(ptb_word_lm.py)を実行するとエラーが出る件について, 解決したので記録]]></title>
+    <link href="http://camberbridge.github.io/2016/03/03/TensorFlow%E3%81%A7RNN%E3%81%AEPTB-LSTM-model-ptb-word-lm-py-%E3%81%A7%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%8C%E5%87%BA%E3%82%8B%E4%BB%B6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-%E8%A7%A3%E6%B1%BA%E3%81%97%E3%81%9F%E3%81%AE%E3%81%A7%E8%A8%98%E9%8C%B2/"/>
+    <id>http://camberbridge.github.io/2016/03/03/TensorFlowでRNNのPTB-LSTM-model-ptb-word-lm-py-でエラーが出る件について-解決したので記録/</id>
+    <published>2016-03-03T07:48:12.000Z</published>
+    <updated>2016-03-03T09:01:36.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="環境">環境</h2><ul>
+<li>OS X</li>
+<li>Python 2.7系</li>
+<li>TensorFlow 0.7系</li>
+</ul>
+<h2 id="概要">概要</h2><p>TensorFlowで<a href="https://www.tensorflow.org/versions/master/tutorials/recurrent/index.html" target="_blank" rel="external">RNNのPTB LSTM model(ptb_word_lm.py)</a>の実行を試みたところ, エラーになったので, その対処をしました.<br>カレントディレクトリはptb_word_lm.pyがある層です. </p>
+<h3 id="エラー1「AttributeError:_‘module’_object_has_no_attribute_‘gfile’」">エラー1「AttributeError: ‘module’ object has no attribute ‘gfile’」</h3><p>GitHubの<a href="https://github.com/tensorflow/tensorflow/issues/1121" target="_blank" rel="external">issue #1121</a>によると, ズバリ0.6.0を使ってくれとのことでした. よって今のところはブランチを0.6.0に変えて解決です(vrvさんによると現在バグ対処してくれている模様です).</p>
+<h3 id="エラー2「ImportError:_No_module_named_ptb」">エラー2「ImportError: No module named ptb」</h3><p>ptb_word_lm.pyの<code>from tensorflow.models.rnn.ptb import reader</code>を<code>import reader</code>にして解決です.</p>
+<h3 id="エラー3「TypeError:_unsupported_operand_type(s)_for_/:_‘Tensor’_and_‘int’」">エラー3「TypeError: unsupported operand type(s) for /: ‘Tensor’ and ‘int’」</h3><p><strong>future</strong>のdivisionモジュールでの割り算でエラーが出ています.<br>これはPython 3系を使っていれば起こらないエラーのようです. 自分は2.7系なので<code>from tensorflow.models.rnn.ptb import reader</code>をコメントアウトして解決です.</p>
+<h3 id="エラー4「NameError:_global_name_‘time’_is_not_defined」">エラー4「NameError: global name ‘time’ is not defined」</h3><p>timeモジュールが見つからないためエラーが出ています.<br><code>import time</code>して解決です.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="環境">環境</h2><ul>
+<li>OS X</li>
+<li>Python 2.7系</li>
+<li>TensorFlow 0.7系</li>
+</ul>
+<h2 id="概要">概要</h2><p>TensorFlowで<a href="https://]]>
+    </summary>
+    
+      <category term="TensorFlow" scheme="http://camberbridge.github.io/tags/TensorFlow/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[トピックモデルの実験]]></title>
