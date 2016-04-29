@@ -6,16 +6,20 @@
   <meta name="viewport" content="width=device-width" />
   <meta name="format-detection" content="telephone=no" />
   
-  <title>Archives: 2015/9 | キャンベルとヨセミテ</title>
-  <meta name="description" content="Webまわりのいろいろなことを試してそれを公開してみるページ.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="キャンベルとヨセミテ">
-<meta property="og:url" content="http://camberbridge.github.io/archives/2015/09/index.html">
+  <title>Google検索の検索結果画面をPC版にする | キャンベルとヨセミテ</title>
+  <meta name="description" content="概要スマホでGoogle検索エンジンを使ってWeb検索すると, 検索結果画面はスマホの画面サイズにアレンジされたものとなって表示される. さらに検索結果件数が表示されなくなったりと, 表示そのものの簡単化も行われる. 
+自分はWebIDFを特徴量のひとつとしてFirefox add-on for mobileの開発で使っている関係上, 検索結果件数を取得できないことは致命傷. そこでGoogle検">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google検索の検索結果画面をPC版にする">
+<meta property="og:url" content="http://camberbridge.github.io/2016/04/29/Google検索の検索結果画面をPC版にする/index.html">
 <meta property="og:site_name" content="キャンベルとヨセミテ">
-<meta property="og:description" content="Webまわりのいろいろなことを試してそれを公開してみるページ.">
+<meta property="og:description" content="概要スマホでGoogle検索エンジンを使ってWeb検索すると, 検索結果画面はスマホの画面サイズにアレンジされたものとなって表示される. さらに検索結果件数が表示されなくなったりと, 表示そのものの簡単化も行われる. 
+自分はWebIDFを特徴量のひとつとしてFirefox add-on for mobileの開発で使っている関係上, 検索結果件数を取得できないことは致命傷. そこでGoogle検">
+<meta property="og:updated_time" content="2016-04-29T12:25:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="キャンベルとヨセミテ">
-<meta name="twitter:description" content="Webまわりのいろいろなことを試してそれを公開してみるページ.">
+<meta name="twitter:title" content="Google検索の検索結果画面をPC版にする">
+<meta name="twitter:description" content="概要スマホでGoogle検索エンジンを使ってWeb検索すると, 検索結果画面はスマホの画面サイズにアレンジされたものとなって表示される. さらに検索結果件数が表示されなくなったりと, 表示そのものの簡単化も行われる. 
+自分はWebIDFを特徴量のひとつとしてFirefox add-on for mobileの開発で使っている関係上, 検索結果件数を取得できないことは致命傷. そこでGoogle検">
   
     <link rel="alternative" href="/atom.xml" title="キャンベルとヨセミテ" type="application/atom+xml">
   
@@ -66,39 +70,63 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/09/25/アドオンスクリプトから外部WebAPIをたたく/" class="archive-article-date">
-  <time datetime="2015-09-25T13:13:06.000Z" itemprop="datePublished">9月 25</time>
+        <section id="main"><a href="http://camberbridge.github.io/2016/04/29/Google検索の検索結果画面をPC版にする/">
+  <img src="https://ga-beacon.appspot.com/UA-73404675-1/2016/04/29/Google検索の検索結果画面をPC版にする/" width="1" height="1" /></a>
+
+<article id="post-Google検索の検索結果画面をPC版にする" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/29/Google検索の検索結果画面をPC版にする/" class="article-date">
+  <time datetime="2016-04-29T11:06:18.000Z" itemprop="datePublished">2016-04-29</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/25/アドオンスクリプトから外部WebAPIをたたく/">アドオンスクリプトから外部WebAPIをたたく</a>
+    <h1 class="article-title" itemprop="name">
+      Google検索の検索結果画面をPC版にする
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="概要">概要</h1><p>スマホでGoogle検索エンジンを使ってWeb検索すると, 検索結果画面はスマホの画面サイズにアレンジされたものとなって表示される. さらに検索結果件数が表示されなくなったりと, 表示そのものの簡単化も行われる. </p>
+<p>自分は<em>WebIDF</em>を特徴量のひとつとしてFirefox add-on for mobileの開発で使っている関係上, 検索結果件数を取得できないことは致命傷. そこでGoogle検索結果画面のPC版表示がどうしても必要だったので, その対処法を示す. </p>
+<h2 id="対処法">対処法</h2><p>検索結果画面のURL末尾にパラメータ<code>&amp;nomo=1</code>を付与する.<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http<span class="variable">s:</span>//www.google.<span class="keyword">co</span>.jp/<span class="built_in">search</span>?<span class="keyword">q</span>=&lt;検索クエリ&gt;&amp;nomo=<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>これによってPC版の検索結果画面が表示される. そして検索結果件数が欲しいなら好みのやり方で#resultStatsを指定して取得するだけ. </p>
+<h1 id="おまけ">おまけ</h1><p>Google検索結果画面の表示件数を変更したい場合にも上記方法は使える. Google検索エンジンの設定画面のURL末尾にパラメータ<code>&amp;nomo=1</code>を付与してアクセスすれば詳細な設定変更を行うことができる. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://camberbridge.github.io/2016/04/29/Google検索の検索結果画面をPC版にする/" data-id="cinlnbpm00012lcwkumn440y6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Firefox-add-on-for-mobile/">Firefox add-on for mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webスクレイピング/">Webスクレイピング</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/13/Javaは識別子にUnicode文字が使えるよってお話/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Javaは識別子にUnicode文字が使えるよってお話</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+
 </section>
         
           <aside id="sidebar">

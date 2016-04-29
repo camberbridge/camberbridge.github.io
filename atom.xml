@@ -5,7 +5,7 @@
   <subtitle><![CDATA[Webまわりのいろいろなことを試してそれを公開してみるページ]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://camberbridge.github.io//"/>
-  <updated>2016-03-12T17:59:38.000Z</updated>
+  <updated>2016-04-29T12:25:27.000Z</updated>
   <id>http://camberbridge.github.io//</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Google検索の検索結果画面をPC版にする]]></title>
+    <link href="http://camberbridge.github.io/2016/04/29/Google%E6%A4%9C%E7%B4%A2%E3%81%AE%E6%A4%9C%E7%B4%A2%E7%B5%90%E6%9E%9C%E7%94%BB%E9%9D%A2%E3%82%92PC%E7%89%88%E3%81%AB%E3%81%99%E3%82%8B/"/>
+    <id>http://camberbridge.github.io/2016/04/29/Google検索の検索結果画面をPC版にする/</id>
+    <published>2016-04-29T11:06:18.000Z</published>
+    <updated>2016-04-29T12:25:27.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="概要">概要</h1><p>スマホでGoogle検索エンジンを使ってWeb検索すると, 検索結果画面はスマホの画面サイズにアレンジされたものとなって表示される. さらに検索結果件数が表示されなくなったりと, 表示そのものの簡単化も行われる. </p>
+<p>自分は<em>WebIDF</em>を特徴量のひとつとしてFirefox add-on for mobileの開発で使っている関係上, 検索結果件数を取得できないことは致命傷. そこでGoogle検索結果画面のPC版表示がどうしても必要だったので, その対処法を示す. </p>
+<h2 id="対処法">対処法</h2><p>検索結果画面のURL末尾にパラメータ<code>&amp;nomo=1</code>を付与する.<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http<span class="variable">s:</span>//www.google.<span class="keyword">co</span>.jp/<span class="built_in">search</span>?<span class="keyword">q</span>=&lt;検索クエリ&gt;&amp;nomo=<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>これによってPC版の検索結果画面が表示される. そして検索結果件数が欲しいなら好みのやり方で#resultStatsを指定して取得するだけ. </p>
+<h1 id="おまけ">おまけ</h1><p>Google検索結果画面の表示件数を変更したい場合にも上記方法は使える. Google検索エンジンの設定画面のURL末尾にパラメータ<code>&amp;nomo=1</code>を付与してアクセスすれば詳細な設定変更を行うことができる. </p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="概要">概要</h1><p>スマホでGoogle検索エンジンを使ってWeb検索すると, 検索結果画面はスマホの画面サイズにアレンジされたものとなって表示される. さらに検索結果件数が表示されなくなったりと, 表示そのものの簡単化も行われる. </p>
+<p>自分は]]>
+    </summary>
+    
+      <category term="Firefox add-on for mobile" scheme="http://camberbridge.github.io/tags/Firefox-add-on-for-mobile/"/>
+    
+      <category term="Webスクレイピング" scheme="http://camberbridge.github.io/tags/Web%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Javaは識別子にUnicode文字が使えるよってお話]]></title>
