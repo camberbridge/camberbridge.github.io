@@ -8,18 +8,18 @@
   
   <title>Google検索の検索結果画面をPC版にする | キャンベルとヨセミテ</title>
   <meta name="description" content="概要スマホでGoogle検索エンジンを使ってWeb検索すると, 検索結果画面はスマホの画面サイズにアレンジされたものとなって表示される. さらに検索結果件数が表示されなくなったりと, 表示そのものの簡単化も行われる. 
-自分はWebIDFを特徴量のひとつとしてFirefox add-on for mobileの開発で使っている関係上, 検索結果件数を取得できないことは致命傷. そこでGoogle検">
+自分はFirefox add-on for mobileの開発で, WebIDF (Web Inverse Document Frequency) を特徴量のひとつとして使っている">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Google検索の検索結果画面をPC版にする">
 <meta property="og:url" content="http://camberbridge.github.io/2016/04/29/Google検索の検索結果画面をPC版にする/index.html">
 <meta property="og:site_name" content="キャンベルとヨセミテ">
 <meta property="og:description" content="概要スマホでGoogle検索エンジンを使ってWeb検索すると, 検索結果画面はスマホの画面サイズにアレンジされたものとなって表示される. さらに検索結果件数が表示されなくなったりと, 表示そのものの簡単化も行われる. 
-自分はWebIDFを特徴量のひとつとしてFirefox add-on for mobileの開発で使っている関係上, 検索結果件数を取得できないことは致命傷. そこでGoogle検">
-<meta property="og:updated_time" content="2016-04-29T12:25:27.000Z">
+自分はFirefox add-on for mobileの開発で, WebIDF (Web Inverse Document Frequency) を特徴量のひとつとして使っている">
+<meta property="og:updated_time" content="2016-05-07T06:18:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google検索の検索結果画面をPC版にする">
 <meta name="twitter:description" content="概要スマホでGoogle検索エンジンを使ってWeb検索すると, 検索結果画面はスマホの画面サイズにアレンジされたものとなって表示される. さらに検索結果件数が表示されなくなったりと, 表示そのものの簡単化も行われる. 
-自分はWebIDFを特徴量のひとつとしてFirefox add-on for mobileの開発で使っている関係上, 検索結果件数を取得できないことは致命傷. そこでGoogle検">
+自分はFirefox add-on for mobileの開発で, WebIDF (Web Inverse Document Frequency) を特徴量のひとつとして使っている">
   
     <link rel="alternative" href="/atom.xml" title="キャンベルとヨセミテ" type="application/atom+xml">
   
@@ -96,7 +96,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="概要">概要</h1><p>スマホでGoogle検索エンジンを使ってWeb検索すると, 検索結果画面はスマホの画面サイズにアレンジされたものとなって表示される. さらに検索結果件数が表示されなくなったりと, 表示そのものの簡単化も行われる. </p>
-<p>自分は<em>WebIDF</em>を特徴量のひとつとしてFirefox add-on for mobileの開発で使っている関係上, 検索結果件数を取得できないことは致命傷. そこでGoogle検索結果画面のPC版表示がどうしても必要だったので, その対処法を示す. </p>
+<p>自分はFirefox add-on for mobileの開発で, <em>WebIDF (Web Inverse Document Frequency)</em> を特徴量のひとつとして使っている関係上, 検索結果件数を取得できないことは致命傷. そこでGoogle検索結果画面のPC版表示がどうしても必要だったので, その対処法を示す. </p>
 <h2 id="対処法">対処法</h2><p>検索結果画面のURL末尾にパラメータ<code>&amp;nomo=1</code>を付与する.<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http<span class="variable">s:</span>//www.google.<span class="keyword">co</span>.jp/<span class="built_in">search</span>?<span class="keyword">q</span>=&lt;検索クエリ&gt;&amp;nomo=<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
 <p>これによってPC版の検索結果画面が表示される. そして検索結果件数が欲しいなら好みのやり方で#resultStatsを指定して取得するだけ. </p>
 <h1 id="おまけ">おまけ</h1><p>Google検索結果画面の表示件数を変更したい場合にも上記方法は使える. Google検索エンジンの設定画面のURL末尾にパラメータ<code>&amp;nomo=1</code>を付与してアクセスすれば詳細な設定変更を行うことができる. </p>
