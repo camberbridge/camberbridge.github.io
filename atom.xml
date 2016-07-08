@@ -5,7 +5,7 @@
   <subtitle><![CDATA[Webまわりのいろいろなことを試してそれを公開してみるページ]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://camberbridge.github.io//"/>
-  <updated>2016-05-07T06:18:32.000Z</updated>
+  <updated>2016-07-08T11:35:48.000Z</updated>
   <id>http://camberbridge.github.io//</id>
   
   <author>
@@ -14,6 +14,119 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[自己相互情報量 (Pointwise Mutual Information, PMI) について]]></title>
+    <link href="http://camberbridge.github.io/2016/07/08/%E8%87%AA%E5%B7%B1%E7%9B%B8%E4%BA%92%E6%83%85%E5%A0%B1%E9%87%8F-Pointwise-Mutual-Information-PMI-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/"/>
+    <id>http://camberbridge.github.io/2016/07/08/自己相互情報量-Pointwise-Mutual-Information-PMI-について/</id>
+    <published>2016-07-08T08:49:41.000Z</published>
+    <updated>2016-07-08T11:35:48.000Z</updated>
+    <content type="html"><![CDATA[<p>自己相互情報量とは, 2つの事象の間の関連度合いを測る尺度である(負から正までの値をとる).<br>自然言語処理では自己相互情報量が相互情報量と呼ばれることがある. しかし, 情報理論で定義される相互情報量(後述する)とは全く異なるため, 自己相互情報量と呼ぶのが賢明である.<br>自然言語処理に関する本や論文では略称の<strong>PMI</strong>がよく用いられる.</p>
+<hr>
+<h2 id="PMIの定義">PMIの定義</h2><p>確率変数のある実現値xと, 別の確率変数のある実現値yに対して, 自己相互情報量PMI(x, y)は, </p>
+<p>$PMI(x, y) = \log_2\frac{P(x, y)}{P(x)P(y)}$  ・・・(1)</p>
+<p>と定義され, 値が大きければ大きいほどxとyの関連している度合いが強い. </p>
+<ul>
+<li>PMIが正の値の場合<ul>
+<li>$P(x, y) &gt; P(x)P(y)$ ⇒ $PMI(x, y) &gt; 0$</li>
+<li><strong>xとyが一緒に出現しやすい. (独立よりも)共起しやすい傾向にある. </strong></li>
+</ul>
+</li>
+<li>PMIが負の場合<ul>
+<li>$P(x, y) &lt; P(x)P(y)$ ⇒ $PMI(x, y) &lt; 0$</li>
+<li><strong>xとyが一緒に出現しにくい. (独立よりも)共起しにくい傾向にある. </strong></li>
+</ul>
+</li>
+<li>PMIが0の場合<ul>
+<li>$P(x, y) = P(x)P(y)$ ⇒ $PMI(x, y) = log1 = 0$</li>
+<li><strong>xとyの関連がない. それぞれ独立に出現する. </strong></li>
+</ul>
+</li>
+<li>正の値, 負の値の絶対値が大きいほど傾向が強い. </li>
+</ul>
+<h2 id="相互情報量_(Mutual_Information,_MI)_について">相互情報量 (Mutual Information, MI) について</h2><ul>
+<li>MIとは, PMIの平均(確率変数X, Yの全ての実現値$x_{i}$, $y_{i}$に関して平均をとったもの)である.</li>
+<li>PMIは実現値(スカラー)の対に関して定義される量に対し, MIは確率変数(ベクトル)の対に関して定義される量である. </li>
+</ul>
+<h3 id="MIの定義">MIの定義</h3><p>2つの確率変数XとYに対し, 相互情報量MI(X, Y)は, </p>
+<p>$MI(X, Y) = \sum_{x, y} P(x, y)\log_2\frac{P(x, y)}{P(x)P(y)}$  ・・・(2)</p>
+<p>と定義され, 0以上の値をとる <a href="http://omm.ishikawa-nct.ac.jp/ex/exercises/Pj0GgAAA/#answer" target="_blank" rel="external">$^1$</a>. </p>
+<hr>
+<h2 id="自然言語処理におけるPMI">自然言語処理におけるPMI</h2><p>PMIの値が示す2つの事象の関連度合いは, 自然言語処理においては単語の共起性と捉えることができ, さらに単語の意味的な類似性と近似できる(2つの単語が一緒に起こりやすい場合は, 意味的にも関連しているだろうという直感に基づいて).<br>ここでxとyを単語とすると, </p>
+<ul>
+<li>ある文中でx, yがそれぞれ出現する確率は$P(x)$, $P(y)$</li>
+<li>x, yが文中に同時に出現する確率は$P(x, y)$</li>
+</ul>
+<p>と表される.<br>式は以下の通り. </p>
+<p>$PMI(x, y) = \log_2\frac{P(x, y)}{P(x)P(y)} = \log_2\frac{\frac{C(x, y)}{N}}{\frac{C(x)}{N} \cdot \frac{C(y)}{N}} = \log_2\frac{C(x, y) \cdot N}{C(x)C(y)}$  ・・・(3)</p>
+<h3 id="単語の出現確率について">単語の出現確率について</h3><p>単語の出現確率は, 最尤推定で決定されることが多い <a href="http://id.fnshr.info/2012/01/24/wordmle/" target="_blank" rel="external">$^2$</a>.<br>各単語の出現確率が二項分布に従っているとし, 尤度から最尤推定によって単語の出現確率の式を導出している例は<a href="http://id.fnshr.info/2012/01/24/wordmle/#toc5" target="_blank" rel="external">こちら</a></p>
+<h3 id="PMIの式の意味">PMIの式の意味</h3><p>(1)式を変形すると, 以下のようになる. </p>
+<p>$PMI(x, y) = \log_2\frac{P(x, y)}{P(x)P(y)} = \log_2\frac{P(x \cap y)}{P(x)P(y)} = \log_2\frac{P(x)P(y \vert x)}{P(x)P(y)} = \log_2\frac{P(y \vert x)}{P(y)} = \log_2{P(y \vert x)} - \log_2{P(y)}$  ・・・(4)</p>
+<p>(4)式は, 単語xが出現したときに単語yが出現する確率について, y単体での出現確率を引いたものである.<br>つまりPMIの式は, <strong>“単語の共起確率から単語単体での出現確率の影響を差し引くことで, より正確に単語間の共起を測ろうとしている”</strong>と理解できる.<br>例えば, “the”のようにどの文中にも現れるような単語は, 他のどの単語に対しても共起確率$P(“the”, w)$が高くなるので, 結果としてPMIの値が大きくなり, 関連が高いと判断されてしまう.<br>これを防ぐために”the”単体での出現確率を差し引くことで, 他単語との関連度を低くできる. </p>
+<h3 id="PMIの使い方">PMIの使い方</h3><p>単語総数が10000の文書内にある2つの単語”自然”と”言語”の関連度を測るとする.<br>文中に”自然”が120回, “言語”が40回出現し, 20回共起しているとすると(3)式より, </p>
+<p>$PMI(自然, 言語) = \log_{2}\frac{20 \cdot 10000}{120 \cdot 40} \approx 5.38$</p>
+<h3 id="共起の判定方法">共起の判定方法</h3><p>2つの単語が共起関係にあるかどうかの判定方法は, 単語Bigramや単語10-gramを使い, 単語xの前後2単語以内もしくは10単語以内に単語yが出現するかどうかで判定することがある <a href="http://d.hatena.ne.jp/n_shuyo/20100827/fsnlp" target="_blank" rel="external">$^3$</a>$^,$<a href="http://www.cl.ecei.tohoku.ac.jp/publications/2013/nabeshima-thesis.pdf" target="_blank" rel="external">$^4$</a>.<br>つまり, <strong>単語の共起確率は単語n-gramでの共起を基に求める</strong>ということ. </p>
+<hr>
+<h2 id="PMIの抱える問題と解決策">PMIの抱える問題と解決策</h2><p>PMIには2つの問題があるため, 使う際には考慮する必要がある. </p>
+<h3 id="1-_共起頻度が0の場合,_PMIが計算できない問題">1. 共起頻度が0の場合, PMIが計算できない問題</h3><p>単語の共起頻度が0の場合, </p>
+<p>$P(x,y) = 0$ ⇒ $PMI(x, y) = -∞$</p>
+<p>と発散してしまい, PMIが計算できない問題がある. </p>
+<h4 id="解決策">解決策</h4><p>この問題に対し, 共起頻度が0の時点でPMIの値を0とするか, もしくはPMI導出式の共起確率部分に一定のパラメータを加算する<strong>スムージング(平滑化)</strong>がよく行われる <a href="http://db-event.jpn.org/deim2016/papers/267.pdf" target="_blank" rel="external">$^5$</a>$^,$<a href="http://www.tkl.iis.u-tokyo.ac.jp/top/modules/newdb/extract/1313/data/nl2013_nishina.pdf" target="_blank" rel="external">$^6$</a>. </p>
+<ul>
+<li>共起頻度が0の時点でPMIの値を0にする<ul>
+<li>これは単純であるが, 負の値をとるPMIの値を0に丸め込んでしまうため, 「xとyが共起しにくい特徴」を無くしてしまう問題がある.</li>
+</ul>
+</li>
+<li>スムージング <ul>
+<li>慣例として対数をとる際に共起頻度に1が加算される. <ul>
+<li>1を加算することによるPMIへの影響については, 一定のパラメータを加えたところでPMI同士を比較したときの順序関係は変わらないため, 問題ない.</li>
+</ul>
+</li>
+<li>その都度手動でパラメータを調整する場合もある <a href="http://www.isca-speech.org/archive_open/archive_papers/iscslp2004/102.pdf" target="_blank" rel="external">$^7$</a>. <ul>
+<li>参考文献[<a href="http://www.isca-speech.org/archive_open/archive_papers/iscslp2004/102.pdf" target="_blank" rel="external">7</a>]では, 以下の計算式によってスムージングを行っている. <ul>
+<li>$N’(x, y) = N(x, y) + C$  ・・・(5)</li>
+<li>$P_{smooth} (x, y) = \frac{N’(x, y) + αP(x)P(y)}{1 + α}$  ・・・(6)</li>
+</ul>
+</li>
+<li>パラメータC, αはクロスバリデーションによって最適値を決め, そのパラメータを使ったスムージング共起確率$P_{smooth} (x, y)$を使ってPMIを計算している. </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-_出現頻度の低い単語同士が共起した場合にPMIの値が非常に大きくなる問題">2. 出現頻度の低い単語同士が共起した場合にPMIの値が非常に大きくなる問題</h3><p>例として単語総数が10000の文書について, 以下の2つの場合を考える. </p>
+<ul>
+<li>C(x, y) = 1, C(x) = 1, C(y) = 1の場合<ul>
+<li>PMI(x, y) = log(10000)</li>
+</ul>
+</li>
+<li>C(x, y) = 1000, C(x) = 1000, C(y) = 1000 の場合<ul>
+<li>PMI(x, y) = log(10)</li>
+</ul>
+</li>
+</ul>
+<p>単語xとyがそれぞれ1000回出現していて, さらにそれが常に共起している2つ目のPMIの方が値は大きいはずだが, 1つ目の単語の出現頻度が低い場合のPMIの方が大きい.<br>この問題は単語の出現確率が最尤推定による推定量であることが関係しており, 最尤推定で求めた出現確率が単語の正確な出現確率と大きく異なっていることが原因であると考えられる. </p>
+<h4 id="解決策-1">解決策</h4><p>この問題を解決するためには単語の出現確率をより正確に求めることが必要である.<br>したがって単語の出現確率に最尤推定量を使うのではなく, <strong>事後分布最大化推定値(maximum a posterior estimator, MAP 推定値)</strong>などの他の推定手法を用いればよい. </p>
+<hr>
+<h1 id="参考文献">参考文献</h1><p>[<a href="http://omm.ishikawa-nct.ac.jp/ex/exercises/Pj0GgAAA/#answer" target="_blank" rel="external">1</a>]　“例題：相互情報量の性質”.<br>　　<a href="http://omm.ishikawa-nct.ac.jp/ex/exercises/Pj0GgAAA/#answer" target="_blank" rel="external">http://omm.ishikawa-nct.ac.jp/ex/exercises/Pj0GgAAA/#answer</a></p>
+<p>[<a href="http://id.fnshr.info/2012/01/24/wordmle/" target="_blank" rel="external">2</a>]　“単語の出現確率の最尤推定”<br>　　<a href="http://id.fnshr.info/2012/01/24/wordmle/" target="_blank" rel="external">http://id.fnshr.info/2012/01/24/wordmle/</a></p>
+<p>[<a href="http://d.hatena.ne.jp/n_shuyo/20100827/fsnlp" target="_blank" rel="external">3</a>]　“FSNLP 5.4 Mutual Information(相互情報量)”<br>　　<a href="http://d.hatena.ne.jp/n_shuyo/20100827/fsnlp" target="_blank" rel="external">http://d.hatena.ne.jp/n_shuyo/20100827/fsnlp</a></p>
+<p>[<a href="http://www.cl.ecei.tohoku.ac.jp/publications/2013/nabeshima-thesis.pdf" target="_blank" rel="external">4</a>]　鍋島啓太. “<a href="http://www.cl.ecei.tohoku.ac.jp/publications/2013/nabeshima-thesis.pdf" target="_blank" rel="external">構成性に基づく評価極性知識獲得</a>“. 2011.</p>
+<p>[<a href="http://db-event.jpn.org/deim2016/papers/267.pdf" target="_blank" rel="external">5</a>]　岩成達哉ら. “<a href="http://db-event.jpn.org/deim2016/papers/267.pdf" target="_blank" rel="external">多様な手がかりを用いた形容詞に基づく概念語の順序付け</a>“. 2016.</p>
+<p>[<a href="http://www.tkl.iis.u-tokyo.ac.jp/top/modules/newdb/extract/1313/data/nl2013_nishina.pdf" target="_blank" rel="external">6</a>]　仁科俊晴ら. “<a href="http://www.tkl.iis.u-tokyo.ac.jp/top/modules/newdb/extract/1313/data/nl2013_nishina.pdf" target="_blank" rel="external">対義形容詞対との相互情報量を利用した概念語の順序付け</a>“. 2013.</p>
+<p>[<a href="http://www.isca-speech.org/archive_open/archive_papers/iscslp2004/102.pdf" target="_blank" rel="external">7</a>]　Gang Guoら. “<a href="http://www.isca-speech.org/archive_open/archive_papers/iscslp2004/102.pdf" target="_blank" rel="external">A COMPARATIVE STUDY ON VARIOUS CONFIDENCE MEASURES IN LARGE VOCABULARY SPEECH RECOGNITION</a>“. 2004.</p>
+<p>[<a href="http://www.lr.pi.titech.ac.jp/~takamura/ml4nl.html" target="_blank" rel="external">8</a>] 高村大也. “<a href="http://www.lr.pi.titech.ac.jp/~takamura/ml4nl.html" target="_blank" rel="external">言語処理のための機械学習入門</a>”. 2011.</p>
+<p>※ [<a href="http://www.lr.pi.titech.ac.jp/~takamura/ml4nl.html" target="_blank" rel="external">8</a>]については1.6章と4.6章を参考にした. </p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>自己相互情報量とは, 2つの事象の間の関連度合いを測る尺度である(負から正までの値をとる).<br>自然言語処理では自己相互情報量が相互情報量と呼ばれることがある. しかし, 情報理論で定義される相互情報量(後述する)とは全く異なるため, 自己相互情報量と呼ぶのが賢明である]]>
+    </summary>
+    
+      <category term="素性選択" scheme="http://camberbridge.github.io/tags/%E7%B4%A0%E6%80%A7%E9%81%B8%E6%8A%9E/"/>
+    
+      <category term="自己相互情報量" scheme="http://camberbridge.github.io/tags/%E8%87%AA%E5%B7%B1%E7%9B%B8%E4%BA%92%E6%83%85%E5%A0%B1%E9%87%8F/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Google検索の検索結果画面をPC版にする]]></title>

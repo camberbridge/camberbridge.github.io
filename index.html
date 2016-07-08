@@ -26,6 +26,26 @@
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   
 
+
+  
+  <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      extensions: ["tex2jax.js"],
+      jax: ["input/TeX","output/HTML-CSS"],
+      "HTML-CSS": {
+          styles: {".MathJax_Preview": {visibility: "hidden"}}
+      },
+      tex2jax: {
+          inlineMath: [["$","$"],["\\(","\\)"]],
+          displayMath: [ ['$$','$$'], ['\[','\]'] ],
+          processEscapes: true
+      },
+      TeX: {extensions: ["AMSmath.js","AMSsymbols.js","https://sonoisa.github.io/xyjax_ext/xypic.js"]}
+  });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 </head>
 
 <body>
@@ -68,6 +88,144 @@
       <div class="outer">
         <section id="main">
   
+    <a href="http://camberbridge.github.io/2016/07/08/自己相互情報量-Pointwise-Mutual-Information-PMI-について/">
+  <img src="https://ga-beacon.appspot.com/UA-73404675-1/2016/07/08/自己相互情報量-Pointwise-Mutual-Information-PMI-について/" width="1" height="1" /></a>
+
+<article id="post-自己相互情報量-Pointwise-Mutual-Information-PMI-について" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/08/自己相互情報量-Pointwise-Mutual-Information-PMI-について/" class="article-date">
+  <time datetime="2016-07-08T08:49:41.000Z" itemprop="datePublished">2016-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/08/自己相互情報量-Pointwise-Mutual-Information-PMI-について/">自己相互情報量 (Pointwise Mutual Information, PMI) について</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>自己相互情報量とは, 2つの事象の間の関連度合いを測る尺度である(負から正までの値をとる).<br>自然言語処理では自己相互情報量が相互情報量と呼ばれることがある. しかし, 情報理論で定義される相互情報量(後述する)とは全く異なるため, 自己相互情報量と呼ぶのが賢明である.<br>自然言語処理に関する本や論文では略称の<strong>PMI</strong>がよく用いられる.</p>
+<hr>
+<h2 id="PMIの定義">PMIの定義</h2><p>確率変数のある実現値xと, 別の確率変数のある実現値yに対して, 自己相互情報量PMI(x, y)は, </p>
+<p>$PMI(x, y) = \log_2\frac{P(x, y)}{P(x)P(y)}$  ・・・(1)</p>
+<p>と定義され, 値が大きければ大きいほどxとyの関連している度合いが強い. </p>
+<ul>
+<li>PMIが正の値の場合<ul>
+<li>$P(x, y) &gt; P(x)P(y)$ ⇒ $PMI(x, y) &gt; 0$</li>
+<li><strong>xとyが一緒に出現しやすい. (独立よりも)共起しやすい傾向にある. </strong></li>
+</ul>
+</li>
+<li>PMIが負の場合<ul>
+<li>$P(x, y) &lt; P(x)P(y)$ ⇒ $PMI(x, y) &lt; 0$</li>
+<li><strong>xとyが一緒に出現しにくい. (独立よりも)共起しにくい傾向にある. </strong></li>
+</ul>
+</li>
+<li>PMIが0の場合<ul>
+<li>$P(x, y) = P(x)P(y)$ ⇒ $PMI(x, y) = log1 = 0$</li>
+<li><strong>xとyの関連がない. それぞれ独立に出現する. </strong></li>
+</ul>
+</li>
+<li>正の値, 負の値の絶対値が大きいほど傾向が強い. </li>
+</ul>
+<h2 id="相互情報量_(Mutual_Information,_MI)_について">相互情報量 (Mutual Information, MI) について</h2><ul>
+<li>MIとは, PMIの平均(確率変数X, Yの全ての実現値$x_{i}$, $y_{i}$に関して平均をとったもの)である.</li>
+<li>PMIは実現値(スカラー)の対に関して定義される量に対し, MIは確率変数(ベクトル)の対に関して定義される量である. </li>
+</ul>
+<h3 id="MIの定義">MIの定義</h3><p>2つの確率変数XとYに対し, 相互情報量MI(X, Y)は, </p>
+<p>$MI(X, Y) = \sum_{x, y} P(x, y)\log_2\frac{P(x, y)}{P(x)P(y)}$  ・・・(2)</p>
+<p>と定義され, 0以上の値をとる <a href="http://omm.ishikawa-nct.ac.jp/ex/exercises/Pj0GgAAA/#answer" target="_blank" rel="external">$^1$</a>. </p>
+<hr>
+<h2 id="自然言語処理におけるPMI">自然言語処理におけるPMI</h2><p>PMIの値が示す2つの事象の関連度合いは, 自然言語処理においては単語の共起性と捉えることができ, さらに単語の意味的な類似性と近似できる(2つの単語が一緒に起こりやすい場合は, 意味的にも関連しているだろうという直感に基づいて).<br>ここでxとyを単語とすると, </p>
+<ul>
+<li>ある文中でx, yがそれぞれ出現する確率は$P(x)$, $P(y)$</li>
+<li>x, yが文中に同時に出現する確率は$P(x, y)$</li>
+</ul>
+<p>と表される.<br>式は以下の通り. </p>
+<p>$PMI(x, y) = \log_2\frac{P(x, y)}{P(x)P(y)} = \log_2\frac{\frac{C(x, y)}{N}}{\frac{C(x)}{N} \cdot \frac{C(y)}{N}} = \log_2\frac{C(x, y) \cdot N}{C(x)C(y)}$  ・・・(3)</p>
+<h3 id="単語の出現確率について">単語の出現確率について</h3><p>単語の出現確率は, 最尤推定で決定されることが多い <a href="http://id.fnshr.info/2012/01/24/wordmle/" target="_blank" rel="external">$^2$</a>.<br>各単語の出現確率が二項分布に従っているとし, 尤度から最尤推定によって単語の出現確率の式を導出している例は<a href="http://id.fnshr.info/2012/01/24/wordmle/#toc5" target="_blank" rel="external">こちら</a></p>
+<h3 id="PMIの式の意味">PMIの式の意味</h3><p>(1)式を変形すると, 以下のようになる. </p>
+<p>$PMI(x, y) = \log_2\frac{P(x, y)}{P(x)P(y)} = \log_2\frac{P(x \cap y)}{P(x)P(y)} = \log_2\frac{P(x)P(y \vert x)}{P(x)P(y)} = \log_2\frac{P(y \vert x)}{P(y)} = \log_2{P(y \vert x)} - \log_2{P(y)}$  ・・・(4)</p>
+<p>(4)式は, 単語xが出現したときに単語yが出現する確率について, y単体での出現確率を引いたものである.<br>つまりPMIの式は, <strong>“単語の共起確率から単語単体での出現確率の影響を差し引くことで, より正確に単語間の共起を測ろうとしている”</strong>と理解できる.<br>例えば, “the”のようにどの文中にも現れるような単語は, 他のどの単語に対しても共起確率$P(“the”, w)$が高くなるので, 結果としてPMIの値が大きくなり, 関連が高いと判断されてしまう.<br>これを防ぐために”the”単体での出現確率を差し引くことで, 他単語との関連度を低くできる. </p>
+<h3 id="PMIの使い方">PMIの使い方</h3><p>単語総数が10000の文書内にある2つの単語”自然”と”言語”の関連度を測るとする.<br>文中に”自然”が120回, “言語”が40回出現し, 20回共起しているとすると(3)式より, </p>
+<p>$PMI(自然, 言語) = \log_{2}\frac{20 \cdot 10000}{120 \cdot 40} \approx 5.38$</p>
+<h3 id="共起の判定方法">共起の判定方法</h3><p>2つの単語が共起関係にあるかどうかの判定方法は, 単語Bigramや単語10-gramを使い, 単語xの前後2単語以内もしくは10単語以内に単語yが出現するかどうかで判定することがある <a href="http://d.hatena.ne.jp/n_shuyo/20100827/fsnlp" target="_blank" rel="external">$^3$</a>$^,$<a href="http://www.cl.ecei.tohoku.ac.jp/publications/2013/nabeshima-thesis.pdf" target="_blank" rel="external">$^4$</a>.<br>つまり, <strong>単語の共起確率は単語n-gramでの共起を基に求める</strong>ということ. </p>
+<hr>
+<h2 id="PMIの抱える問題と解決策">PMIの抱える問題と解決策</h2><p>PMIには2つの問題があるため, 使う際には考慮する必要がある. </p>
+<h3 id="1-_共起頻度が0の場合,_PMIが計算できない問題">1. 共起頻度が0の場合, PMIが計算できない問題</h3><p>単語の共起頻度が0の場合, </p>
+<p>$P(x,y) = 0$ ⇒ $PMI(x, y) = -∞$</p>
+<p>と発散してしまい, PMIが計算できない問題がある. </p>
+<h4 id="解決策">解決策</h4><p>この問題に対し, 共起頻度が0の時点でPMIの値を0とするか, もしくはPMI導出式の共起確率部分に一定のパラメータを加算する<strong>スムージング(平滑化)</strong>がよく行われる <a href="http://db-event.jpn.org/deim2016/papers/267.pdf" target="_blank" rel="external">$^5$</a>$^,$<a href="http://www.tkl.iis.u-tokyo.ac.jp/top/modules/newdb/extract/1313/data/nl2013_nishina.pdf" target="_blank" rel="external">$^6$</a>. </p>
+<ul>
+<li>共起頻度が0の時点でPMIの値を0にする<ul>
+<li>これは単純であるが, 負の値をとるPMIの値を0に丸め込んでしまうため, 「xとyが共起しにくい特徴」を無くしてしまう問題がある.</li>
+</ul>
+</li>
+<li>スムージング <ul>
+<li>慣例として対数をとる際に共起頻度に1が加算される. <ul>
+<li>1を加算することによるPMIへの影響については, 一定のパラメータを加えたところでPMI同士を比較したときの順序関係は変わらないため, 問題ない.</li>
+</ul>
+</li>
+<li>その都度手動でパラメータを調整する場合もある <a href="http://www.isca-speech.org/archive_open/archive_papers/iscslp2004/102.pdf" target="_blank" rel="external">$^7$</a>. <ul>
+<li>参考文献[<a href="http://www.isca-speech.org/archive_open/archive_papers/iscslp2004/102.pdf" target="_blank" rel="external">7</a>]では, 以下の計算式によってスムージングを行っている. <ul>
+<li>$N’(x, y) = N(x, y) + C$  ・・・(5)</li>
+<li>$P_{smooth} (x, y) = \frac{N’(x, y) + αP(x)P(y)}{1 + α}$  ・・・(6)</li>
+</ul>
+</li>
+<li>パラメータC, αはクロスバリデーションによって最適値を決め, そのパラメータを使ったスムージング共起確率$P_{smooth} (x, y)$を使ってPMIを計算している. </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-_出現頻度の低い単語同士が共起した場合にPMIの値が非常に大きくなる問題">2. 出現頻度の低い単語同士が共起した場合にPMIの値が非常に大きくなる問題</h3><p>例として単語総数が10000の文書について, 以下の2つの場合を考える. </p>
+<ul>
+<li>C(x, y) = 1, C(x) = 1, C(y) = 1の場合<ul>
+<li>PMI(x, y) = log(10000)</li>
+</ul>
+</li>
+<li>C(x, y) = 1000, C(x) = 1000, C(y) = 1000 の場合<ul>
+<li>PMI(x, y) = log(10)</li>
+</ul>
+</li>
+</ul>
+<p>単語xとyがそれぞれ1000回出現していて, さらにそれが常に共起している2つ目のPMIの方が値は大きいはずだが, 1つ目の単語の出現頻度が低い場合のPMIの方が大きい.<br>この問題は単語の出現確率が最尤推定による推定量であることが関係しており, 最尤推定で求めた出現確率が単語の正確な出現確率と大きく異なっていることが原因であると考えられる. </p>
+<h4 id="解決策-1">解決策</h4><p>この問題を解決するためには単語の出現確率をより正確に求めることが必要である.<br>したがって単語の出現確率に最尤推定量を使うのではなく, <strong>事後分布最大化推定値(maximum a posterior estimator, MAP 推定値)</strong>などの他の推定手法を用いればよい. </p>
+<hr>
+<h1 id="参考文献">参考文献</h1><p>[<a href="http://omm.ishikawa-nct.ac.jp/ex/exercises/Pj0GgAAA/#answer" target="_blank" rel="external">1</a>]　“例題：相互情報量の性質”.<br>　　<a href="http://omm.ishikawa-nct.ac.jp/ex/exercises/Pj0GgAAA/#answer" target="_blank" rel="external">http://omm.ishikawa-nct.ac.jp/ex/exercises/Pj0GgAAA/#answer</a></p>
+<p>[<a href="http://id.fnshr.info/2012/01/24/wordmle/" target="_blank" rel="external">2</a>]　“単語の出現確率の最尤推定”<br>　　<a href="http://id.fnshr.info/2012/01/24/wordmle/" target="_blank" rel="external">http://id.fnshr.info/2012/01/24/wordmle/</a></p>
+<p>[<a href="http://d.hatena.ne.jp/n_shuyo/20100827/fsnlp" target="_blank" rel="external">3</a>]　“FSNLP 5.4 Mutual Information(相互情報量)”<br>　　<a href="http://d.hatena.ne.jp/n_shuyo/20100827/fsnlp" target="_blank" rel="external">http://d.hatena.ne.jp/n_shuyo/20100827/fsnlp</a></p>
+<p>[<a href="http://www.cl.ecei.tohoku.ac.jp/publications/2013/nabeshima-thesis.pdf" target="_blank" rel="external">4</a>]　鍋島啓太. “<a href="http://www.cl.ecei.tohoku.ac.jp/publications/2013/nabeshima-thesis.pdf" target="_blank" rel="external">構成性に基づく評価極性知識獲得</a>“. 2011.</p>
+<p>[<a href="http://db-event.jpn.org/deim2016/papers/267.pdf" target="_blank" rel="external">5</a>]　岩成達哉ら. “<a href="http://db-event.jpn.org/deim2016/papers/267.pdf" target="_blank" rel="external">多様な手がかりを用いた形容詞に基づく概念語の順序付け</a>“. 2016.</p>
+<p>[<a href="http://www.tkl.iis.u-tokyo.ac.jp/top/modules/newdb/extract/1313/data/nl2013_nishina.pdf" target="_blank" rel="external">6</a>]　仁科俊晴ら. “<a href="http://www.tkl.iis.u-tokyo.ac.jp/top/modules/newdb/extract/1313/data/nl2013_nishina.pdf" target="_blank" rel="external">対義形容詞対との相互情報量を利用した概念語の順序付け</a>“. 2013.</p>
+<p>[<a href="http://www.isca-speech.org/archive_open/archive_papers/iscslp2004/102.pdf" target="_blank" rel="external">7</a>]　Gang Guoら. “<a href="http://www.isca-speech.org/archive_open/archive_papers/iscslp2004/102.pdf" target="_blank" rel="external">A COMPARATIVE STUDY ON VARIOUS CONFIDENCE MEASURES IN LARGE VOCABULARY SPEECH RECOGNITION</a>“. 2004.</p>
+<p>[<a href="http://www.lr.pi.titech.ac.jp/~takamura/ml4nl.html" target="_blank" rel="external">8</a>] 高村大也. “<a href="http://www.lr.pi.titech.ac.jp/~takamura/ml4nl.html" target="_blank" rel="external">言語処理のための機械学習入門</a>”. 2011.</p>
+<p>※ [<a href="http://www.lr.pi.titech.ac.jp/~takamura/ml4nl.html" target="_blank" rel="external">8</a>]については1.6章と4.6章を参考にした. </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://camberbridge.github.io/2016/07/08/自己相互情報量-Pointwise-Mutual-Information-PMI-について/" data-id="ciqdig1lz00039jn1wzdcovbf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/素性選択/">素性選択</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自己相互情報量/">自己相互情報量</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <a href="http://camberbridge.github.io/2016/04/29/Google検索の検索結果画面をPC版にする/">
   <img src="https://ga-beacon.appspot.com/UA-73404675-1/2016/04/29/Google検索の検索結果画面をPC版にする/" width="1" height="1" /></a>
 
@@ -102,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://camberbridge.github.io/2016/04/29/Google検索の検索結果画面をPC版にする/" data-id="cinlnbpm00012lcwkumn440y6" class="article-share-link">Share</a>
+      <a data-url="http://camberbridge.github.io/2016/04/29/Google検索の検索結果画面をPC版にする/" data-id="ciqdig1nc00179jn18c9xed6p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Firefox-add-on-for-mobile/">Firefox add-on for mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webスクレイピング/">Webスクレイピング</a></li></ul>
@@ -153,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://camberbridge.github.io/2016/03/13/Javaは識別子にUnicode文字が使えるよってお話/" data-id="cinlnbplo000wlcwk3w8n47ki" class="article-share-link">Share</a>
+      <a data-url="http://camberbridge.github.io/2016/03/13/Javaは識別子にUnicode文字が使えるよってお話/" data-id="ciqdig1n300119jn10lf10a9a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -205,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://camberbridge.github.io/2016/03/03/TensorFlowでRNNのPTB-LSTM-model-ptb-word-lm-py-でエラーが出る件について-解決したので記録/" data-id="cinlnbplh000tlcwkmfk5sgk6" class="article-share-link">Share</a>
+      <a data-url="http://camberbridge.github.io/2016/03/03/TensorFlowでRNNのPTB-LSTM-model-ptb-word-lm-py-でエラーが出る件について-解決したので記録/" data-id="ciqdig1my000y9jn1ouk1xdwk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TensorFlow/">TensorFlow</a></li></ul>
@@ -331,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://camberbridge.github.io/2016/02/11/トピックモデルの実験/" data-id="cinlnbpks0003lcwken7mgxit" class="article-share-link">Share</a>
+      <a data-url="http://camberbridge.github.io/2016/02/11/トピックモデルの実験/" data-id="ciqdig1m500089jn1dssh9jsb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LSA/">LSA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NMF/">NMF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/janome/">janome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/トピックモデル/">トピックモデル</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/形態素解析/">形態素解析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/潜在意味解析/">潜在意味解析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/非負値行列因子分解/">非負値行列因子分解</a></li></ul>
@@ -391,7 +549,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://camberbridge.github.io/2016/02/05/テレビ朝日のインターンシップでインターンネットしてきた/" data-id="cinlnbpl0000klcwkxxqx7f9l" class="article-share-link">Share</a>
+      <a data-url="http://camberbridge.github.io/2016/02/05/テレビ朝日のインターンシップでインターンネットしてきた/" data-id="ciqdig1md000p9jn1xizmj36n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/インターンシップ/">インターンシップ</a></li></ul>
@@ -438,7 +596,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://camberbridge.github.io/2015/09/25/アドオンスクリプトから外部WebAPIをたたく/" data-id="cinlnbpl6000nlcwkwkvu7loh" class="article-share-link">Share</a>
+      <a data-url="http://camberbridge.github.io/2015/09/25/アドオンスクリプトから外部WebAPIをたたく/" data-id="ciqdig1mn000s9jn1aigt8kui" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebAPI/">WebAPI</a></li></ul>
@@ -485,7 +643,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://camberbridge.github.io/2015/08/14/FirefoxAdd-onの開発着手/" data-id="cinlnbpk70000lcwkwtdulg9g" class="article-share-link">Share</a>
+      <a data-url="http://camberbridge.github.io/2015/08/14/FirefoxAdd-onの開発着手/" data-id="ciqdig1li00009jn1t1cv63jp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/アドオン/">アドオン</a></li></ul>
@@ -618,7 +776,7 @@ window.addEventListener("DOMContentLoaded",function(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://camberbridge.github.io/2015/08/10/Three-jsを使ってみた/" data-id="cinlnbplc000qlcwkz6kjj21u" class="article-share-link">Share</a>
+      <a data-url="http://camberbridge.github.io/2015/08/10/Three-jsを使ってみた/" data-id="ciqdig1mt000v9jn1dogk3crc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Three-js/">Three.js</a></li></ul>
@@ -661,7 +819,7 @@ window.addEventListener("DOMContentLoaded",function(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://camberbridge.github.io/2015/08/09/Hexo始めた/" data-id="cinlnbpls000zlcwk55s0owk6" class="article-share-link">Share</a>
+      <a data-url="http://camberbridge.github.io/2015/08/09/Hexo始めた/" data-id="ciqdig1n700149jn1qwcqvdte" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -685,7 +843,7 @@ window.addEventListener("DOMContentLoaded",function(){
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Firefox-add-on-for-mobile/">Firefox add-on for mobile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSA/">LSA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMF/">NMF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAPI/">WebAPI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webスクレイピング/">Webスクレイピング</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/janome/">janome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/アドオン/">アドオン</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/インターンシップ/">インターンシップ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/トピックモデル/">トピックモデル</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/形態素解析/">形態素解析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/潜在意味解析/">潜在意味解析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/非負値行列因子分解/">非負値行列因子分解</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Firefox-add-on-for-mobile/">Firefox add-on for mobile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSA/">LSA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMF/">NMF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAPI/">WebAPI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webスクレイピング/">Webスクレイピング</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/janome/">janome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/アドオン/">アドオン</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/インターンシップ/">インターンシップ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/トピックモデル/">トピックモデル</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/形態素解析/">形態素解析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/潜在意味解析/">潜在意味解析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/素性選択/">素性選択</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自己相互情報量/">自己相互情報量</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/非負値行列因子分解/">非負値行列因子分解</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -694,7 +852,7 @@ window.addEventListener("DOMContentLoaded",function(){
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Firefox-add-on-for-mobile/" style="font-size: 10px;">Firefox add-on for mobile</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LSA/" style="font-size: 10px;">LSA</a> <a href="/tags/NMF/" style="font-size: 10px;">NMF</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Three-js/" style="font-size: 10px;">Three.js</a> <a href="/tags/WebAPI/" style="font-size: 10px;">WebAPI</a> <a href="/tags/Webスクレイピング/" style="font-size: 10px;">Webスクレイピング</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/janome/" style="font-size: 10px;">janome</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/アドオン/" style="font-size: 10px;">アドオン</a> <a href="/tags/インターンシップ/" style="font-size: 10px;">インターンシップ</a> <a href="/tags/トピックモデル/" style="font-size: 10px;">トピックモデル</a> <a href="/tags/形態素解析/" style="font-size: 10px;">形態素解析</a> <a href="/tags/潜在意味解析/" style="font-size: 10px;">潜在意味解析</a> <a href="/tags/非負値行列因子分解/" style="font-size: 10px;">非負値行列因子分解</a>
+      <a href="/tags/Firefox-add-on-for-mobile/" style="font-size: 10px;">Firefox add-on for mobile</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LSA/" style="font-size: 10px;">LSA</a> <a href="/tags/NMF/" style="font-size: 10px;">NMF</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Three-js/" style="font-size: 10px;">Three.js</a> <a href="/tags/WebAPI/" style="font-size: 10px;">WebAPI</a> <a href="/tags/Webスクレイピング/" style="font-size: 10px;">Webスクレイピング</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/janome/" style="font-size: 10px;">janome</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/アドオン/" style="font-size: 10px;">アドオン</a> <a href="/tags/インターンシップ/" style="font-size: 10px;">インターンシップ</a> <a href="/tags/トピックモデル/" style="font-size: 10px;">トピックモデル</a> <a href="/tags/形態素解析/" style="font-size: 10px;">形態素解析</a> <a href="/tags/潜在意味解析/" style="font-size: 10px;">潜在意味解析</a> <a href="/tags/素性選択/" style="font-size: 10px;">素性選択</a> <a href="/tags/自己相互情報量/" style="font-size: 10px;">自己相互情報量</a> <a href="/tags/非負値行列因子分解/" style="font-size: 10px;">非負値行列因子分解</a>
     </div>
   </div>
 
@@ -703,7 +861,7 @@ window.addEventListener("DOMContentLoaded",function(){
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">4月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">3月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">2月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">9月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">8月 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">7月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">4月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">3月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">2月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">9月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">8月 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -713,6 +871,10 @@ window.addEventListener("DOMContentLoaded",function(){
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/07/08/自己相互情報量-Pointwise-Mutual-Information-PMI-について/">自己相互情報量 (Pointwise Mutual Information, PMI) について</a>
+          </li>
         
           <li>
             <a href="/2016/04/29/Google検索の検索結果画面をPC版にする/">Google検索の検索結果画面をPC版にする</a>
@@ -728,10 +890,6 @@ window.addEventListener("DOMContentLoaded",function(){
         
           <li>
             <a href="/2016/02/11/トピックモデルの実験/">トピックモデルの実験</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/05/テレビ朝日のインターンシップでインターンネットしてきた/">テレビ朝日のインターンシップでインターンネットしてきた</a>
           </li>
         
       </ul>
