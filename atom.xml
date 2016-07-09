@@ -5,7 +5,7 @@
   <subtitle><![CDATA[Webまわりのいろいろなことを試してそれを公開してみるページ]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://camberbridge.github.io//"/>
-  <updated>2016-07-08T11:35:48.000Z</updated>
+  <updated>2016-07-09T07:08:40.000Z</updated>
   <id>http://camberbridge.github.io//</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[自己相互情報量 (Pointwise Mutual Information, PMI) について]]></title>
+    <title><![CDATA[自然言語処理における自己相互情報量 (Pointwise Mutual Information, PMI) ]]></title>
     <link href="http://camberbridge.github.io/2016/07/08/%E8%87%AA%E5%B7%B1%E7%9B%B8%E4%BA%92%E6%83%85%E5%A0%B1%E9%87%8F-Pointwise-Mutual-Information-PMI-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/"/>
     <id>http://camberbridge.github.io/2016/07/08/自己相互情報量-Pointwise-Mutual-Information-PMI-について/</id>
     <published>2016-07-08T08:49:41.000Z</published>
-    <updated>2016-07-08T11:35:48.000Z</updated>
+    <updated>2016-07-09T07:08:40.000Z</updated>
     <content type="html"><![CDATA[<p>自己相互情報量とは, 2つの事象の間の関連度合いを測る尺度である(負から正までの値をとる).<br>自然言語処理では自己相互情報量が相互情報量と呼ばれることがある. しかし, 情報理論で定義される相互情報量(後述する)とは全く異なるため, 自己相互情報量と呼ぶのが賢明である.<br>自然言語処理に関する本や論文では略称の<strong>PMI</strong>がよく用いられる.</p>
 <hr>
 <h2 id="PMIの定義">PMIの定義</h2><p>確率変数のある実現値xと, 別の確率変数のある実現値yに対して, 自己相互情報量PMI(x, y)は, </p>
