@@ -7,19 +7,18 @@
   <meta name="format-detection" content="telephone=no" />
   
   <title>Javaは識別子にUnicode文字が使えるよってお話 | キャンベルとヨセミテ</title>
-  <meta name="description" content="概要半年前から先輩の誘いでJava講習の非常勤講師を”ときどき”やっている. そしてその講習会の特に初心者向けでは, 意外な質問が飛んできたり受講者分のエラーコードが見られたりするので, 結構楽しい.そこで今回は質問の中で「ああそういえば」となった事を書き残す. それはJavaで識別子にUnicode文字が使えるよって(まぁ言語仕様の)お話. 
-言語規定 - 識別子Javaでは文字リテラルや文字列">
+  <meta name="description" content="概要半年前から先輩の誘いでJava講習の非常勤講師を”ときどき”やっている. そしてその講習会の特に初心者向けでは, 意外な質問が飛んできたり受講者分のエラーコードが見られたりするので, 結構楽しい.そこで今回は質問の中で「ああそういえば」となった事を書き残す. それはJavaで識別子にUnicode文字が使えるよって(まぁ言語仕様の)お話.  言語規定 - 識別子Javaでは文字リテラルや文字列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javaは識別子にUnicode文字が使えるよってお話">
-<meta property="og:url" content="http://camberbridge.github.io/2016/03/13/Javaは識別子にUnicode文字が使えるよってお話/index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;camberbridge.github.io&#x2F;2016&#x2F;03&#x2F;13&#x2F;Java%E3%81%AF%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%ABUnicode%E6%96%87%E5%AD%97%E3%81%8C%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%88%E3%81%A3%E3%81%A6%E3%81%8A%E8%A9%B1&#x2F;index.html">
 <meta property="og:site_name" content="キャンベルとヨセミテ">
-<meta property="og:description" content="概要半年前から先輩の誘いでJava講習の非常勤講師を”ときどき”やっている. そしてその講習会の特に初心者向けでは, 意外な質問が飛んできたり受講者分のエラーコードが見られたりするので, 結構楽しい.そこで今回は質問の中で「ああそういえば」となった事を書き残す. それはJavaで識別子にUnicode文字が使えるよって(まぁ言語仕様の)お話. 
-言語規定 - 識別子Javaでは文字リテラルや文字列">
-<meta property="og:updated_time" content="2016-03-12T17:59:38.000Z">
+<meta property="og:description" content="概要半年前から先輩の誘いでJava講習の非常勤講師を”ときどき”やっている. そしてその講習会の特に初心者向けでは, 意外な質問が飛んできたり受講者分のエラーコードが見られたりするので, 結構楽しい.そこで今回は質問の中で「ああそういえば」となった事を書き残す. それはJavaで識別子にUnicode文字が使えるよって(まぁ言語仕様の)お話.  言語規定 - 識別子Javaでは文字リテラルや文字列">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2016-03-12T16:31:40.000Z">
+<meta property="article:modified_time" content="2016-03-12T17:59:38.000Z">
+<meta property="article:author" content="UEC_Abe">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Javaは識別子にUnicode文字が使えるよってお話">
-<meta name="twitter:description" content="概要半年前から先輩の誘いでJava講習の非常勤講師を”ときどき”やっている. そしてその講習会の特に初心者向けでは, 意外な質問が飛んできたり受講者分のエラーコードが見られたりするので, 結構楽しい.そこで今回は質問の中で「ああそういえば」となった事を書き残す. それはJavaで識別子にUnicode文字が使えるよって(まぁ言語仕様の)お話. 
-言語規定 - 識別子Javaでは文字リテラルや文字列">
   
     <link rel="alternative" href="/atom.xml" title="キャンベルとヨセミテ" type="application/atom+xml">
   
@@ -27,7 +26,9 @@
     <link rel="icon" href="/favicon.png">
   
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
   
 
 
@@ -47,10 +48,11 @@
       TeX: {extensions: ["AMSmath.js","AMSsymbols.js","https://sonoisa.github.io/xyjax_ext/xypic.js"]}
   });
   </script>
-  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!--script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
-</head>
+<meta name="generator" content="Hexo 4.1.1"></head>
 
 <body>
   <div id="container">
@@ -84,18 +86,19 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://camberbridge.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://camberbridge.github.io"></form>
       </div>
     </div>
   </div>
 </header>
       <div class="outer">
-        <section id="main"><a href="http://camberbridge.github.io/2016/03/13/Javaは識別子にUnicode文字が使えるよってお話/">
-  <img src="https://ga-beacon.appspot.com/UA-73404675-1/2016/03/13/Javaは識別子にUnicode文字が使えるよってお話/" width="1" height="1" /></a>
+        <section id="main"><a href="https://camberbridge.github.io/2016/03/13/Java%E3%81%AF%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%ABUnicode%E6%96%87%E5%AD%97%E3%81%8C%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%88%E3%81%A3%E3%81%A6%E3%81%8A%E8%A9%B1/">
+  <img src="https://ga-beacon.appspot.com/UA-73404675-1/2016/03/13/Javaは識別子にUnicode文字が使えるよってお話/" width="1" height="1" />
+</a>
 
 <article id="post-Javaは識別子にUnicode文字が使えるよってお話" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/03/13/Javaは識別子にUnicode文字が使えるよってお話/" class="article-date">
+    <a href="/2016/03/13/Java%E3%81%AF%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%ABUnicode%E6%96%87%E5%AD%97%E3%81%8C%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%88%E3%81%A3%E3%81%A6%E3%81%8A%E8%A9%B1/" class="article-date">
   <time datetime="2016-03-12T16:31:40.000Z" itemprop="datePublished">2016-03-13</time>
 </a>
     
@@ -115,23 +118,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="概要">概要</h1><p>半年前から先輩の誘いでJava講習の非常勤講師を”ときどき”やっている. そしてその講習会の特に初心者向けでは, 意外な質問が飛んできたり受講者分のエラーコードが見られたりするので, 結構楽しい.<br>そこで今回は質問の中で「ああそういえば」となった事を書き残す. それはJavaで識別子にUnicode文字が使えるよって(まぁ言語仕様の)お話. </p>
-<h2 id="言語規定_-_識別子">言語規定 - 識別子</h2><p>Javaでは文字リテラルや文字列リテラル, 識別子(クラス, メソッド, 変数名)にUnicode文字を使うことができる. それらはUTF-8, UTF-16で書くもよし, エスケープ記法で書くもよし.<br>下記例は識別子をUTF-8で書いた場合のプログラムである. これをExample.javaとして保存し, コンパイルしてから実行すればちくわと最も相性のいい”きゅうり”を表示する!…はず!!</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">        <span class="literal">static</span> <span class="class"><span class="keyword">class</span> ちくわについて </span>&#123;</span><br><span class="line">                <span class="built_in">String</span> これでしょ;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">void</span> に合うものは (<span class="built_in">String</span> 相性) &#123;</span><br><span class="line">                        これでしょ = 相性;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="built_in">String</span> に合うもの()&#123;</span><br><span class="line">                        <span class="keyword">return</span> これでしょ;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public <span class="literal">static</span> <span class="keyword">void</span> main (<span class="built_in">String</span>[] args)&#123;</span><br><span class="line">                ちくわについて ちくわ = <span class="keyword">new</span> ちくわについて();</span><br><span class="line">                ちくわ.に合うものは(<span class="string">"きゅうり"</span>);</span><br><span class="line"></span><br><span class="line">                System.out.println(ちくわ.に合うもの());</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上記例で示したことはJavaの言語規定にしっかりと記されている(<a href="http://www.y-adagio.com/public/standards/tr_javalang/3.doc.htm#40625" target="_blank" rel="external">Java言語規定 - 3.8識別子</a>).</p>
-<h1 id="おまけ">おまけ</h1><p>これを応用?した面白い例を紹介します. </p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="command">\u</span>0070<span class="command">\u</span>0075<span class="command">\u</span>0062<span class="command">\u</span>006c<span class="command">\u</span>0069<span class="command">\u</span>0063<span class="command">\u</span>0020<span class="command">\u</span>0020<span class="command">\u</span>0020<span class="command">\u</span>0020</span><br><span class="line"><span class="command">\u</span>0063<span class="command">\u</span>006c<span class="command">\u</span>0061<span class="command">\u</span>0073<span class="command">\u</span>0073<span class="command">\u</span>0020<span class="command">\u</span>0055<span class="command">\u</span>0067<span class="command">\u</span>006c<span class="command">\u</span>0079</span><br><span class="line"><span class="command">\u</span>007b<span class="command">\u</span>0070<span class="command">\u</span>0075<span class="command">\u</span>0062<span class="command">\u</span>006c<span class="command">\u</span>0069<span class="command">\u</span>0063<span class="command">\u</span>0020<span class="command">\u</span>0020<span class="command">\u</span>0020</span><br><span class="line"><span class="command">\u</span>0020<span class="command">\u</span>0020<span class="command">\u</span>0020<span class="command">\u</span>0020<span class="command">\u</span>0073<span class="command">\u</span>0074<span class="command">\u</span>0061<span class="command">\u</span>0074<span class="command">\u</span>0069<span class="command">\u</span>0063</span><br><span class="line"><span class="command">\u</span>0076<span class="command">\u</span>006f<span class="command">\u</span>0069<span class="command">\u</span>0064<span class="command">\u</span>0020<span class="command">\u</span>006d<span class="command">\u</span>0061<span class="command">\u</span>0069<span class="command">\u</span>006e<span class="command">\u</span>0028</span><br><span class="line"><span class="command">\u</span>0053<span class="command">\u</span>0074<span class="command">\u</span>0072<span class="command">\u</span>0069<span class="command">\u</span>006e<span class="command">\u</span>0067<span class="command">\u</span>005b<span class="command">\u</span>005d<span class="command">\u</span>0020<span class="command">\u</span>0020</span><br><span class="line"><span class="command">\u</span>0020<span class="command">\u</span>0020<span class="command">\u</span>0020<span class="command">\u</span>0020<span class="command">\u</span>0061<span class="command">\u</span>0072<span class="command">\u</span>0067<span class="command">\u</span>0073<span class="command">\u</span>0029<span class="command">\u</span>007b</span><br><span class="line"><span class="command">\u</span>0053<span class="command">\u</span>0079<span class="command">\u</span>0073<span class="command">\u</span>0074<span class="command">\u</span>0065<span class="command">\u</span>006d<span class="command">\u</span>002e<span class="command">\u</span>006f<span class="command">\u</span>0075<span class="command">\u</span>0074</span><br><span class="line"><span class="command">\u</span>002e<span class="command">\u</span>0070<span class="command">\u</span>0072<span class="command">\u</span>0069<span class="command">\u</span>006e<span class="command">\u</span>0074<span class="command">\u</span>006c<span class="command">\u</span>006e<span class="command">\u</span>0028<span class="command">\u</span>0020</span><br><span class="line"><span class="command">\u</span>0022<span class="command">\u</span>0048<span class="command">\u</span>0065<span class="command">\u</span>006c<span class="command">\u</span>006c<span class="command">\u</span>006f<span class="command">\u</span>0020<span class="command">\u</span>0077<span class="command">\u</span>0022<span class="command">\u</span>002b</span><br><span class="line"><span class="command">\u</span>0022<span class="command">\u</span>006f<span class="command">\u</span>0072<span class="command">\u</span>006c<span class="command">\u</span>0064<span class="command">\u</span>0022<span class="command">\u</span>0029<span class="command">\u</span>003b<span class="command">\u</span>007d<span class="command">\u</span>007d</span><br></pre></td></tr></table></figure>
+        <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>半年前から先輩の誘いでJava講習の非常勤講師を”ときどき”やっている. そしてその講習会の特に初心者向けでは, 意外な質問が飛んできたり受講者分のエラーコードが見られたりするので, 結構楽しい.<br>そこで今回は質問の中で「ああそういえば」となった事を書き残す. それはJavaで識別子にUnicode文字が使えるよって(まぁ言語仕様の)お話. </p>
+<h2 id="言語規定-識別子"><a href="#言語規定-識別子" class="headerlink" title="言語規定 - 識別子"></a>言語規定 - 識別子</h2><p>Javaでは文字リテラルや文字列リテラル, 識別子(クラス, メソッド, 変数名)にUnicode文字を使うことができる. それらはUTF-8, UTF-16で書くもよし, エスケープ記法で書くもよし.<br>下記例は識別子をUTF-8で書いた場合のプログラムである. これをExample.javaとして保存し, コンパイルしてから実行すればちくわと最も相性のいい”きゅうり”を表示する!…はず!!</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span> &#123;</span></span><br><span class="line">        <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> ちくわについて &#123;</span></span><br><span class="line">                <span class="keyword">String</span> これでしょ;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">void</span> に合うものは (<span class="keyword">String</span> 相性) &#123;</span><br><span class="line">                        これでしょ = 相性;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">String</span> に合うもの()&#123;</span><br><span class="line">                        <span class="keyword">return</span> これでしょ;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(<span class="keyword">String</span>[] args)</span></span>&#123;</span><br><span class="line">                ちくわについて ちくわ = <span class="keyword">new</span> ちくわについて();</span><br><span class="line">                ちくわ.に合うものは(<span class="string">"きゅうり"</span>);</span><br><span class="line"></span><br><span class="line">                System.out.<span class="built_in">println</span>(ちくわ.に合うもの());</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上記例で示したことはJavaの言語規定にしっかりと記されている(<a href="http://www.y-adagio.com/public/standards/tr_javalang/3.doc.htm#40625" target="_blank" rel="noopener">Java言語規定 - 3.8識別子</a>).</p>
+<h1 id="おまけ"><a href="#おまけ" class="headerlink" title="おまけ"></a>おまけ</h1><p>これを応用?した面白い例を紹介します. </p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">\u</span>0070<span class="symbol">\u</span>0075<span class="symbol">\u</span>0062<span class="symbol">\u</span>006c<span class="symbol">\u</span>0069<span class="symbol">\u</span>0063<span class="symbol">\u</span>0020<span class="symbol">\u</span>0020<span class="symbol">\u</span>0020<span class="symbol">\u</span>0020</span><br><span class="line"><span class="symbol">\u</span>0063<span class="symbol">\u</span>006c<span class="symbol">\u</span>0061<span class="symbol">\u</span>0073<span class="symbol">\u</span>0073<span class="symbol">\u</span>0020<span class="symbol">\u</span>0055<span class="symbol">\u</span>0067<span class="symbol">\u</span>006c<span class="symbol">\u</span>0079</span><br><span class="line"><span class="symbol">\u</span>007b<span class="symbol">\u</span>0070<span class="symbol">\u</span>0075<span class="symbol">\u</span>0062<span class="symbol">\u</span>006c<span class="symbol">\u</span>0069<span class="symbol">\u</span>0063<span class="symbol">\u</span>0020<span class="symbol">\u</span>0020<span class="symbol">\u</span>0020</span><br><span class="line"><span class="symbol">\u</span>0020<span class="symbol">\u</span>0020<span class="symbol">\u</span>0020<span class="symbol">\u</span>0020<span class="symbol">\u</span>0073<span class="symbol">\u</span>0074<span class="symbol">\u</span>0061<span class="symbol">\u</span>0074<span class="symbol">\u</span>0069<span class="symbol">\u</span>0063</span><br><span class="line"><span class="symbol">\u</span>0076<span class="symbol">\u</span>006f<span class="symbol">\u</span>0069<span class="symbol">\u</span>0064<span class="symbol">\u</span>0020<span class="symbol">\u</span>006d<span class="symbol">\u</span>0061<span class="symbol">\u</span>0069<span class="symbol">\u</span>006e<span class="symbol">\u</span>0028</span><br><span class="line"><span class="symbol">\u</span>0053<span class="symbol">\u</span>0074<span class="symbol">\u</span>0072<span class="symbol">\u</span>0069<span class="symbol">\u</span>006e<span class="symbol">\u</span>0067<span class="symbol">\u</span>005b<span class="symbol">\u</span>005d<span class="symbol">\u</span>0020<span class="symbol">\u</span>0020</span><br><span class="line"><span class="symbol">\u</span>0020<span class="symbol">\u</span>0020<span class="symbol">\u</span>0020<span class="symbol">\u</span>0020<span class="symbol">\u</span>0061<span class="symbol">\u</span>0072<span class="symbol">\u</span>0067<span class="symbol">\u</span>0073<span class="symbol">\u</span>0029<span class="symbol">\u</span>007b</span><br><span class="line"><span class="symbol">\u</span>0053<span class="symbol">\u</span>0079<span class="symbol">\u</span>0073<span class="symbol">\u</span>0074<span class="symbol">\u</span>0065<span class="symbol">\u</span>006d<span class="symbol">\u</span>002e<span class="symbol">\u</span>006f<span class="symbol">\u</span>0075<span class="symbol">\u</span>0074</span><br><span class="line"><span class="symbol">\u</span>002e<span class="symbol">\u</span>0070<span class="symbol">\u</span>0072<span class="symbol">\u</span>0069<span class="symbol">\u</span>006e<span class="symbol">\u</span>0074<span class="symbol">\u</span>006c<span class="symbol">\u</span>006e<span class="symbol">\u</span>0028<span class="symbol">\u</span>0020</span><br><span class="line"><span class="symbol">\u</span>0022<span class="symbol">\u</span>0048<span class="symbol">\u</span>0065<span class="symbol">\u</span>006c<span class="symbol">\u</span>006c<span class="symbol">\u</span>006f<span class="symbol">\u</span>0020<span class="symbol">\u</span>0077<span class="symbol">\u</span>0022<span class="symbol">\u</span>002b</span><br><span class="line"><span class="symbol">\u</span>0022<span class="symbol">\u</span>006f<span class="symbol">\u</span>0072<span class="symbol">\u</span>006c<span class="symbol">\u</span>0064<span class="symbol">\u</span>0022<span class="symbol">\u</span>0029<span class="symbol">\u</span>003b<span class="symbol">\u</span>007d<span class="symbol">\u</span>007d</span><br></pre></td></tr></table></figure>
+
 <p>!?<br>!?!?<br>自分はUnicodeマスターではないため分かりませんでしたが, 実行すると”Hello world”と表示します. これはUgly.javaとして保存すればちゃんと扱えるプログラムなのです.<br>下記は実際にこれをマルチバイト文字に変換したものです. </p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Ugly</span> &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> (<span class="params">String[] args</span>) </span>&#123;</span><br><span class="line">                System.<span class="keyword">out</span>.println(<span class="string">"Hello w"</span> + <span class="string">"orld"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>ちなみに, このおまけは<a href="http://www.amazon.co.jp/Java-Puzzlers-%E7%BD%A0%E3%80%81%E8%90%BD%E3%81%A8%E3%81%97%E7%A9%B4%E3%80%81%E3%82%B3%E3%83%BC%E3%83%8A%E3%83%BC%E3%82%B1%E3%83%BC%E3%82%B9-%E3%82%B8%E3%83%A7%E3%82%B7%E3%83%A5%E3%82%A2%E3%83%BB%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF/dp/4894716895" target="_blank" rel="external">Java Puzzlers</a>というJavaの問題集に載っています. 難しいけどオススメです. </p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Ugly</span> &#123;</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">                System.out.<span class="built_in">println</span>(<span class="string">"Hello w"</span> + <span class="string">"orld"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ちなみに, このおまけは<a href="http://www.amazon.co.jp/Java-Puzzlers-%E7%BD%A0%E3%80%81%E8%90%BD%E3%81%A8%E3%81%97%E7%A9%B4%E3%80%81%E3%82%B3%E3%83%BC%E3%83%8A%E3%83%BC%E3%82%B1%E3%83%BC%E3%82%B9-%E3%82%B8%E3%83%A7%E3%82%B7%E3%83%A5%E3%82%A2%E3%83%BB%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF/dp/4894716895" target="_blank" rel="noopener">Java Puzzlers</a>というJavaの問題集に載っています. 難しいけどオススメです. </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://camberbridge.github.io/2016/03/13/Javaは識別子にUnicode文字が使えるよってお話/" data-id="ciqdig1n300119jn10lf10a9a" class="article-share-link">Share</a>
+      <a data-url="https://camberbridge.github.io/2016/03/13/Java%E3%81%AF%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%ABUnicode%E6%96%87%E5%AD%97%E3%81%8C%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%88%E3%81%A3%E3%81%A6%E3%81%8A%E8%A9%B1/" data-id="ck478unyr0005nez9gb0m2lvn" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>
@@ -139,7 +145,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/04/29/Google検索の検索結果画面をPC版にする/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/04/29/Google%E6%A4%9C%E7%B4%A2%E3%81%AE%E6%A4%9C%E7%B4%A2%E7%B5%90%E6%9E%9C%E7%94%BB%E9%9D%A2%E3%82%92PC%E7%89%88%E3%81%AB%E3%81%99%E3%82%8B/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -149,7 +155,7 @@
     </a>
   
   
-    <a href="/2016/03/03/TensorFlowでRNNのPTB-LSTM-model-ptb-word-lm-py-でエラーが出る件について-解決したので記録/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/03/03/TensorFlow%E3%81%A7RNN%E3%81%AEPTB-LSTM-model-ptb-word-lm-py-%E3%81%A7%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%8C%E5%87%BA%E3%82%8B%E4%BB%B6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-%E8%A7%A3%E6%B1%BA%E3%81%97%E3%81%9F%E3%81%AE%E3%81%A7%E8%A8%98%E9%8C%B2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">TensorFlowでRNNのPTB LSTM model(ptb_word_lm.py)を実行するとエラーが出る件について, 解決したので記録</div>
     </a>
@@ -170,7 +176,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Firefox-add-on-for-mobile/">Firefox add-on for mobile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jaccard係数/">Jaccard係数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSA/">LSA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Min-Hash/">Min Hash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMF/">NMF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/">TensorFlow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAPI/">WebAPI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webスクレイピング/">Webスクレイピング</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/janome/">janome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/アドオン/">アドオン</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/インターンシップ/">インターンシップ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/トピックモデル/">トピックモデル</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/形態素解析/">形態素解析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/潜在意味解析/">潜在意味解析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/素性選択/">素性選択</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自己相互情報量/">自己相互情報量</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/非負値行列因子分解/">非負値行列因子分解</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Firefox-add-on-for-mobile/" rel="tag">Firefox add-on for mobile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jaccard%E4%BF%82%E6%95%B0/" rel="tag">Jaccard係数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSA/" rel="tag">LSA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Min-Hash/" rel="tag">Min Hash</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NMF/" rel="tag">NMF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TensorFlow/" rel="tag">TensorFlow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebAPI/" rel="tag">WebAPI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0/" rel="tag">Webスクレイピング</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/janome/" rel="tag">janome</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A2%E3%83%89%E3%82%AA%E3%83%B3/" rel="tag">アドオン</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%83%E3%83%97/" rel="tag">インターンシップ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%88%E3%83%94%E3%83%83%E3%82%AF%E3%83%A2%E3%83%87%E3%83%AB/" rel="tag">トピックモデル</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BD%A2%E6%85%8B%E7%B4%A0%E8%A7%A3%E6%9E%90/" rel="tag">形態素解析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BD%9C%E5%9C%A8%E6%84%8F%E5%91%B3%E8%A7%A3%E6%9E%90/" rel="tag">潜在意味解析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A0%E6%80%A7%E9%81%B8%E6%8A%9E/" rel="tag">素性選択</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%B7%B1%E7%9B%B8%E4%BA%92%E6%83%85%E5%A0%B1%E9%87%8F/" rel="tag">自己相互情報量</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%9E%E8%B2%A0%E5%80%A4%E8%A1%8C%E5%88%97%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3/" rel="tag">非負値行列因子分解</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -179,7 +185,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Firefox-add-on-for-mobile/" style="font-size: 10px;">Firefox add-on for mobile</a> <a href="/tags/Jaccard係数/" style="font-size: 10px;">Jaccard係数</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LSA/" style="font-size: 10px;">LSA</a> <a href="/tags/Min-Hash/" style="font-size: 10px;">Min Hash</a> <a href="/tags/NMF/" style="font-size: 10px;">NMF</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Three-js/" style="font-size: 10px;">Three.js</a> <a href="/tags/WebAPI/" style="font-size: 10px;">WebAPI</a> <a href="/tags/Webスクレイピング/" style="font-size: 10px;">Webスクレイピング</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/janome/" style="font-size: 10px;">janome</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/アドオン/" style="font-size: 10px;">アドオン</a> <a href="/tags/インターンシップ/" style="font-size: 10px;">インターンシップ</a> <a href="/tags/トピックモデル/" style="font-size: 10px;">トピックモデル</a> <a href="/tags/形態素解析/" style="font-size: 10px;">形態素解析</a> <a href="/tags/潜在意味解析/" style="font-size: 10px;">潜在意味解析</a> <a href="/tags/素性選択/" style="font-size: 10px;">素性選択</a> <a href="/tags/自己相互情報量/" style="font-size: 10px;">自己相互情報量</a> <a href="/tags/非負値行列因子分解/" style="font-size: 10px;">非負値行列因子分解</a>
+      <a href="/tags/Firefox-add-on-for-mobile/" style="font-size: 10px;">Firefox add-on for mobile</a> <a href="/tags/Jaccard%E4%BF%82%E6%95%B0/" style="font-size: 10px;">Jaccard係数</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LSA/" style="font-size: 10px;">LSA</a> <a href="/tags/Min-Hash/" style="font-size: 10px;">Min Hash</a> <a href="/tags/NMF/" style="font-size: 10px;">NMF</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Three-js/" style="font-size: 10px;">Three.js</a> <a href="/tags/WebAPI/" style="font-size: 10px;">WebAPI</a> <a href="/tags/Web%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0/" style="font-size: 10px;">Webスクレイピング</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/janome/" style="font-size: 10px;">janome</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E3%82%A2%E3%83%89%E3%82%AA%E3%83%B3/" style="font-size: 10px;">アドオン</a> <a href="/tags/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%83%E3%83%97/" style="font-size: 10px;">インターンシップ</a> <a href="/tags/%E3%83%88%E3%83%94%E3%83%83%E3%82%AF%E3%83%A2%E3%83%87%E3%83%AB/" style="font-size: 10px;">トピックモデル</a> <a href="/tags/%E5%BD%A2%E6%85%8B%E7%B4%A0%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">形態素解析</a> <a href="/tags/%E6%BD%9C%E5%9C%A8%E6%84%8F%E5%91%B3%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">潜在意味解析</a> <a href="/tags/%E7%B4%A0%E6%80%A7%E9%81%B8%E6%8A%9E/" style="font-size: 10px;">素性選択</a> <a href="/tags/%E8%87%AA%E5%B7%B1%E7%9B%B8%E4%BA%92%E6%83%85%E5%A0%B1%E9%87%8F/" style="font-size: 10px;">自己相互情報量</a> <a href="/tags/%E9%9D%9E%E8%B2%A0%E5%80%A4%E8%A1%8C%E5%88%97%E5%9B%A0%E5%AD%90%E5%88%86%E8%A7%A3/" style="font-size: 10px;">非負値行列因子分解</a>
     </div>
   </div>
 
@@ -188,7 +194,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">10月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">7月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">4月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">3月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">2月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">9月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">8月 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -200,23 +206,23 @@
       <ul>
         
           <li>
-            <a href="/2016/10/05/Min-HashによるJaccard係数の近似実験/">Min HashによるJaccard係数の近似実験</a>
+            <a href="/2016/10/05/Min-Hash%E3%81%AB%E3%82%88%E3%82%8BJaccard%E4%BF%82%E6%95%B0%E3%81%AE%E8%BF%91%E4%BC%BC%E5%AE%9F%E9%A8%93/">Min HashによるJaccard係数の近似実験</a>
           </li>
         
           <li>
-            <a href="/2016/07/08/自己相互情報量-Pointwise-Mutual-Information-PMI-について/">自然言語処理における自己相互情報量 (Pointwise Mutual Information, PMI) </a>
+            <a href="/2016/07/08/%E8%87%AA%E5%B7%B1%E7%9B%B8%E4%BA%92%E6%83%85%E5%A0%B1%E9%87%8F-Pointwise-Mutual-Information-PMI-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/">自然言語処理における自己相互情報量 (Pointwise Mutual Information, PMI) </a>
           </li>
         
           <li>
-            <a href="/2016/04/29/Google検索の検索結果画面をPC版にする/">Google検索の検索結果画面をPC版にする</a>
+            <a href="/2016/04/29/Google%E6%A4%9C%E7%B4%A2%E3%81%AE%E6%A4%9C%E7%B4%A2%E7%B5%90%E6%9E%9C%E7%94%BB%E9%9D%A2%E3%82%92PC%E7%89%88%E3%81%AB%E3%81%99%E3%82%8B/">Google検索の検索結果画面をPC版にする</a>
           </li>
         
           <li>
-            <a href="/2016/03/13/Javaは識別子にUnicode文字が使えるよってお話/">Javaは識別子にUnicode文字が使えるよってお話</a>
+            <a href="/2016/03/13/Java%E3%81%AF%E8%AD%98%E5%88%A5%E5%AD%90%E3%81%ABUnicode%E6%96%87%E5%AD%97%E3%81%8C%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%88%E3%81%A3%E3%81%A6%E3%81%8A%E8%A9%B1/">Javaは識別子にUnicode文字が使えるよってお話</a>
           </li>
         
           <li>
-            <a href="/2016/03/03/TensorFlowでRNNのPTB-LSTM-model-ptb-word-lm-py-でエラーが出る件について-解決したので記録/">TensorFlowでRNNのPTB LSTM model(ptb_word_lm.py)を実行するとエラーが出る件について, 解決したので記録</a>
+            <a href="/2016/03/03/TensorFlow%E3%81%A7RNN%E3%81%AEPTB-LSTM-model-ptb-word-lm-py-%E3%81%A7%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%8C%E5%87%BA%E3%82%8B%E4%BB%B6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-%E8%A7%A3%E6%B1%BA%E3%81%97%E3%81%9F%E3%81%AE%E3%81%A7%E8%A8%98%E9%8C%B2/">TensorFlowでRNNのPTB LSTM model(ptb_word_lm.py)を実行するとエラーが出る件について, 解決したので記録</a>
           </li>
         
       </ul>
@@ -231,7 +237,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      Copyright © 2017 <a href="http://camberbridge.github.io/">UEC_Abe</a> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Copyright © 2019 <a href="http://camberbridge.github.io/">UEC_Abe</a> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
@@ -250,11 +256,17 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js"></script>
+
 
   </div>
 </body>
