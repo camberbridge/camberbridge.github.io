@@ -137,7 +137,7 @@
     <link href="https://camberbridge.github.io/2016/07/08/%E8%87%AA%E5%B7%B1%E7%9B%B8%E4%BA%92%E6%83%85%E5%A0%B1%E9%87%8F-Pointwise-Mutual-Information-PMI-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/"/>
     <id>https://camberbridge.github.io/2016/07/08/自己相互情報量-Pointwise-Mutual-Information-PMI-について/</id>
     <published>2016-07-08T08:49:41.000Z</published>
-    <updated>2016-07-09T07:08:40.000Z</updated>
+    <updated>2021-03-07T15:26:04.000Z</updated>
     <content type="html"><![CDATA[<p>自己相互情報量とは, 2つの事象の間の関連度合いを測る尺度である(負から正までの値をとる).<br>自然言語処理では自己相互情報量が相互情報量と呼ばれることがある. しかし, 情報理論で定義される相互情報量(後述する)とは全く異なるため, 自己相互情報量と呼ぶのが賢明である.<br>自然言語処理に関する本や論文では略称の<strong>PMI</strong>がよく用いられる.</p>
 <hr>
 <h2 id="PMIの定義"><a href="#PMIの定義" class="headerlink" title="PMIの定義"></a>PMIの定義</h2><p>確率変数のある実現値xと, 別の確率変数のある実現値yに対して, 自己相互情報量PMI(x, y)は, </p>
@@ -146,17 +146,17 @@
 <ul>
 <li>PMIが正の値の場合<ul>
 <li>$P(x, y) &gt; P(x)P(y)$ ⇒ $PMI(x, y) &gt; 0$</li>
-<li>*<em>xとyが一緒に出現しやすい. (独立よりも)共起しやすい傾向にある. *</em></li>
+<li><b>xとyが一緒に出現しやすい. (独立よりも)共起しやすい傾向にある. </b></li>
 </ul>
 </li>
 <li>PMIが負の場合<ul>
 <li>$P(x, y) &lt; P(x)P(y)$ ⇒ $PMI(x, y) &lt; 0$</li>
-<li>*<em>xとyが一緒に出現しにくい. (独立よりも)共起しにくい傾向にある. *</em></li>
+<li><b>xとyが一緒に出現しにくい. (独立よりも)共起しにくい傾向にある. </b></li>
 </ul>
 </li>
 <li>PMIが0の場合<ul>
 <li>$P(x, y) = P(x)P(y)$ ⇒ $PMI(x, y) = log1 = 0$</li>
-<li>*<em>xとyの関連がない. それぞれ独立に出現する. *</em></li>
+<li><b>xとyの関連がない. それぞれ独立に出現する. </b></li>
 </ul>
 </li>
 <li>正の値, 負の値の絶対値が大きいほど傾向が強い. </li>
