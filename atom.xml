@@ -5,7 +5,7 @@
   <subtitle><![CDATA[Webまわりのいろいろなことを試してそれを公開してみるページ]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://camberbridge.github.io//"/>
-  <updated>2021-03-10T15:03:48.000Z</updated>
+  <updated>2021-03-11T15:30:30.000Z</updated>
   <id>https://camberbridge.github.io//</id>
   
   <author>
@@ -16,28 +16,28 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[顔認識 (OpenCV DNN) とツイート (Tweepy) をサーバレス環境 (GCP) で定期実行]]></title>
-    <link href="https://camberbridge.github.io/2021/03/11/%E9%A1%94%E8%AA%8D%E8%AD%98-OpenCV-DNN-%E3%81%A8%E3%83%84%E3%82%A4%E3%83%BC%E3%83%88-Tweepy-%E3%82%92%E3%82%B5%E3%83%BC%E3%83%90%E3%83%AC%E3%82%B9%E7%92%B0%E5%A2%83-GCP-%E3%81%A7%E5%AE%9A%E6%9C%9F%E5%AE%9F%E8%A1%8C/"/>
-    <id>https://camberbridge.github.io/2021/03/11/顔認識-OpenCV-DNN-とツイート-Tweepy-をサーバレス環境-GCP-で定期実行/</id>
-    <published>2021-03-10T15:00:00.000Z</published>
-    <updated>2021-03-10T15:03:48.000Z</updated>
-    <content type="html"><![CDATA[<p>Twitterのホームタイムラインを取得して, 顔認識とツイートを定期的に実行する仕組みをサーバレス環境 (GCP) に実装しました.<br>(意訳：推しの画像をリツイートしてみんなに見てもらいたかった<a href="https://twitter.com/pedigree_c" target="_blank" rel="noopener">@pedigree_C</a>)</p>
+    <title><![CDATA[顔認識 (OpenCV DNN) とツイート (Tweepy) をサーバーレス環境 (GCP) で定期実行]]></title>
+    <link href="https://camberbridge.github.io/2021/03/12/%E9%A1%94%E8%AA%8D%E8%AD%98-OpenCV-DNN-%E3%81%A8%E3%83%84%E3%82%A4%E3%83%BC%E3%83%88-Tweepy-%E3%82%92%E3%82%B5%E3%83%BC%E3%83%90%E3%83%AC%E3%82%B9%E7%92%B0%E5%A2%83-GCP-%E3%81%A7%E5%AE%9A%E6%9C%9F%E5%AE%9F%E8%A1%8C/"/>
+    <id>https://camberbridge.github.io/2021/03/12/顔認識-OpenCV-DNN-とツイート-Tweepy-をサーバレス環境-GCP-で定期実行/</id>
+    <published>2021-03-11T15:00:00.000Z</published>
+    <updated>2021-03-11T15:30:30.000Z</updated>
+    <content type="html"><![CDATA[<p>Twitterのホームタイムラインを取得して, 顔認識とツイートを定期的に実行する仕組みをサーバーレス環境 (GCP) に実装しました.<br>(意訳：推しの画像をリツイートしてみんなに見てもらいたかった<a href="https://twitter.com/pedigree_c" target="_blank" rel="noopener">@pedigree_C</a>)</p>
 <p>推しの方々からいいねをもらったりもらわなかったり, 評判がなかなか良いです(?)</p>
 <p>全体のソースコードと詳細は <a href="https://github.com/camberbridge/dft-gcp-serverless" target="_blank" rel="noopener">https://github.com/camberbridge/dft-gcp-serverless</a> にありますのでよろしければご覧ください. </p>
 <hr>
 <h2 id="アーキテクチャ"><a href="#アーキテクチャ" class="headerlink" title="アーキテクチャ"></a>アーキテクチャ</h2><p><img src="https://raw.githubusercontent.com/camberbridge/dft-gcp-serverless/main/architecture.png" alt="顔認識&amp;ツイート定期実行アーキテクチャ" title="アーキテクチャ"></p>
 <p>何と言っても特筆すべきは <strong>Cloud Functions</strong> の柔軟さです.  </p>
 <p>関数が何らかの原因でクラッシュしても, <strong>「失敗時に再試行」</strong>の設定をしておけば最大7日間 (2021年現在), 関数が正常に完了するまで繰り返し呼び出されます (タイムアウト時間は設定可能). </p>
-<p>また, リクエストの多さによってインスタンス数が自動でスケールします.<br>もちろんこの時の上限数は設定可能です.<br>今回の場合, 毎分の小さな定期実行なので問題ないと思っていましたが, 画像付きツイートが多いと (顔認識があるので) 関数の処理に時間がかかって次のリクエスト処理に間に合わないことが多々ありました. </p>
-<p>そんなときに <strong>Cloud Functions</strong> は自動でスケールアウトして, 逆に画像付きツイートが少ないとスケールインしてくれて, 非常に便利です. </p>
+<p>また, リクエストの多さによってインスタンス数が自動でスケールします. もちろんこの時の上限数は設定可能です.<br>今回は, 毎分の小さな定期実行なのでスケーリングしなくても間に合うだろうと思っていましたが, 画像付きツイートが多いと (顔認識があるので) 関数の処理に時間がかかって次のリクエスト処理に間に合わないことが多々ありました. </p>
+<p>そんなときに <strong>Cloud Functions</strong> は自動でスケールアウトして, 逆に画像付きツイートが少ないとスケールインしてくれて, 非常に便利でした. </p>
 <hr>
-<h2 id="サーバレス環境-GCP"><a href="#サーバレス環境-GCP" class="headerlink" title="サーバレス環境 (GCP)"></a>サーバレス環境 (GCP)</h2><h3 id="DBにCloud-Datastore"><a href="#DBにCloud-Datastore" class="headerlink" title="DBにCloud Datastore"></a>DBに<a href="https://cloud.google.com/datastore/" target="_blank" rel="noopener">Cloud Datastore</a></h3><p>Twitterのホームタイムラインを定期的に取得する際, 前回取得したTweet IDよりも新しいものだけを取得するようにしたかったので, 最新のTweet IDを保持しておく必要がありました.<br>そこで, (DBを用意するまでもない構成ですが) 環境をステートレスにしたかったこともあり, ドキュメントDBの <strong>Cloud Datastore</strong> を用いました<a href="https://cloud.google.com/datastore/docs/reference/libraries" target="_blank" rel="noopener">$^1$</a>. </p>
+<h2 id="サーバーレス環境-GCP"><a href="#サーバーレス環境-GCP" class="headerlink" title="サーバーレス環境 (GCP)"></a>サーバーレス環境 (GCP)</h2><h3 id="DBにCloud-Datastore"><a href="#DBにCloud-Datastore" class="headerlink" title="DBにCloud Datastore"></a>DBに<a href="https://cloud.google.com/datastore/" target="_blank" rel="noopener">Cloud Datastore</a></h3><p>Twitterのホームタイムラインを定期的に取得する際, 前回取得したTweet IDよりも新しいものだけを取得するようにしたかったので, 最新のTweet IDを保持しておく必要がありました.<br>そこで, (DBを用意するまでもない構成ですが) 環境をステートレスにしたかったこともあり, ドキュメントDBの <strong>Cloud Datastore</strong> を用いました<a href="https://cloud.google.com/datastore/docs/reference/libraries" target="_blank" rel="noopener">$^1$</a>. </p>
 <p>Tweet IDを書き込むときはデータを増やす理由がないので同じエンティティを更新し続けるようにしました.<br>ベストプラクティス的には, <strong>「1つのエンティティをあまり頻繁に (1秒に1回以上) 更新しないこと」</strong>とありますが, ここでは毎分の更新なので良しとします<a href="https://cloud.google.com/datastore/docs/best-practices#updates_to_an_entity" target="_blank" rel="noopener">$^2$</a>. </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> google.cloud <span class="keyword">import</span> datastore</span><br><span class="line"></span><br><span class="line">datastore_client = datastore.Client()</span><br><span class="line"><span class="comment"># エンティティの種類</span></span><br><span class="line">kind = <span class="string">"Twitter_home"</span></span><br><span class="line"><span class="comment"># エンティティの名前/ID</span></span><br><span class="line">name = <span class="string">"latest_tweet_id"</span></span><br><span class="line">entity_key = datastore_client.key(kind, name)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">put_latest_tweet_id</span><span class="params">(tweet_id)</span>:</span></span><br><span class="line">    entity = datastore.Entity(key=entity_key)</span><br><span class="line">    entity[<span class="string">"id"</span>] = tweet_id</span><br><span class="line"></span><br><span class="line">    <span class="comment"># エンティティ保存</span></span><br><span class="line">    datastore_client.put(entity)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_latest_tweet_id</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># エンティティ取得</span></span><br><span class="line">    entity = datastore_client.get(key=entity_key)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> entity[<span class="string">"id"</span>]</span><br></pre></td></tr></table></figure>
 
 <p><strong>※ローカル環境から Datastore にアクセスする (上のコードを実行する) 場合はサービスアカウントを発行する必要があります<a href="https://cloud.google.com/datastore/docs/reference/libraries#setting_up_authentication" target="_blank" rel="noopener">$^3$</a></strong></p>
-<h3 id="プログラムの実行環境にCloud-Functions"><a href="#プログラムの実行環境にCloud-Functions" class="headerlink" title="プログラムの実行環境にCloud Functions"></a>プログラムの実行環境に<a href="https://cloud.google.com/functions" target="_blank" rel="noopener">Cloud Functions</a></h3><p>イベント単位の実行に適したサーバレスコンピューティングリソースの <strong>Cloud Functions</strong> を用いました.<br>基本的にはGCPコンソールで設定可能ですが, 顔認識に必要なOpenCVのDNNモデルをコンソールからアップロードできません. </p>
-<p>そこで, ソースコードやアセットをzip化したファイルを <strong>gsutil</strong> で <strong>Cloud Storage</strong> にアップロードしておき, <strong>gcloud</strong> による <strong>Functions</strong> デプロイ時にオブジェクトのURLを指定してあげます<a href="https://cloud.google.com/functions/docs/calling/pubsub#deploying_your_function" target="_blank" rel="noopener">$^4$</a>. </p>
+<h3 id="プログラムの実行環境にCloud-Functions"><a href="#プログラムの実行環境にCloud-Functions" class="headerlink" title="プログラムの実行環境にCloud Functions"></a>プログラムの実行環境に<a href="https://cloud.google.com/functions" target="_blank" rel="noopener">Cloud Functions</a></h3><p>イベント単位の実行に適したサーバーレスコンピューティングリソースの <strong>Cloud Functions</strong> を用いました.<br>基本的にはGCPコンソールで作成と設定が可能ですが, 顔認識に必要なOpenCVのDNNモデル等のファイルをコンソールからアップロードできません. </p>
+<p>そこで, ソースコードやアセットをzip化したファイルを <strong>gsutil</strong> で <strong>Cloud Storage</strong> にアップロードしておき, その後の <strong>gcloud</strong> による <strong>Functions</strong> デプロイ時に, オブジェクトURLを指定してあげます<a href="https://cloud.google.com/functions/docs/calling/pubsub#deploying_your_function" target="_blank" rel="noopener">$^4$</a>. </p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> zip -r [FILE_NAME].zip *</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> gsutil mb -p [GCP_PROJECT_ID] -l US-CENTRAL1 gs://[BUCKET_NAME]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> gsutil cp [FILE_NAME].zip gs://[BUCKET_NAME]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> gcloud <span class="built_in">functions</span> deploy [FUNCTION_NAME] \</span></span><br><span class="line">  --source=gs://[BUCKET_NAME]/[FILE_NAME].zip \</span><br><span class="line">  --stage-bucket=[BUCKET_NAME] \</span><br><span class="line">  --trigger-topic=[Pub/Sub_TOPIC_NAME] \</span><br><span class="line">  --memory=256MB \</span><br><span class="line">  --runtime=python37 \</span><br><span class="line">  --region=us-central1 \</span><br><span class="line">  --project=[GCP_PROJECT_ID] \</span><br><span class="line">  --entry-point=main</span><br></pre></td></tr></table></figure>
 
 <h3 id="定期実行のトリガーにCloud-Scheduler-x-Pub-Sub"><a href="#定期実行のトリガーにCloud-Scheduler-x-Pub-Sub" class="headerlink" title="定期実行のトリガーにCloud Scheduler x Pub/Sub"></a>定期実行のトリガーに<a href="https://cloud.google.com/scheduler/docs" target="_blank" rel="noopener">Cloud Scheduler</a> x <a href="https://cloud.google.com/pubsub/docs/overview" target="_blank" rel="noopener">Pub/Sub</a></h3><p>cronと同じ要領で使える <strong>Cloud Scheduler</strong> から毎分 <strong>Pub/Sub</strong> トピックをパブリッシュして <strong>Cloud Functions</strong> をトリガーさせました.<br>トピックは <strong>gcloud</strong> コマンドでデプロイする時に作成 (Pub/Sub_TOPIC_NAME の部分) しており, 受けの <strong>Functions</strong> にも設定しているので, あとは出す側の <strong>Cloud Scheduler</strong> の設定をします.<br>やり方は, GCPコンソールでリージョンやcron, トピックを指定するだけです<a href="https://cloud.google.com/scheduler/docs/tut-pub-sub#create_a_job" target="_blank" rel="noopener">$^5$</a>. </p>
@@ -92,7 +92,7 @@ detections = net.forward()
 <p>[<a href="https://docs.opencv.org/master/d6/d0f/group__dnn.html" target="_blank" rel="noopener">9</a>] “OpenCV Deep Neural Network module”. <a href="https://docs.opencv.org/master/d6/d0f/group__dnn.html" target="_blank" rel="noopener">https://docs.opencv.org/master/d6/d0f/group__dnn.html</a></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>Twitterのホームタイムラインを取得して, 顔認識とツイートを定期的に実行する仕組みをサーバレス環境 (GCP) に実装しました.<br>(意訳：推しの画像をリツイートしてみんなに見てもらいたかった<a href="https://twitter.com/pedigre]]>
+    <![CDATA[<p>Twitterのホームタイムラインを取得して, 顔認識とツイートを定期的に実行する仕組みをサーバーレス環境 (GCP) に実装しました.<br>(意訳：推しの画像をリツイートしてみんなに見てもらいたかった<a href="https://twitter.com/pedigr]]>
     </summary>
     
       <category term="顔認識" scheme="https://camberbridge.github.io/tags/%E9%A1%94%E8%AA%8D%E8%AD%98/"/>
@@ -101,9 +101,9 @@ detections = net.forward()
     
       <category term="GCP (Google Cloud Platform)" scheme="https://camberbridge.github.io/tags/GCP-Google-Cloud-Platform/"/>
     
-      <category term="サーバレスアーキテクチャ" scheme="https://camberbridge.github.io/tags/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%AC%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/"/>
-    
       <category term="Twitter API (Tweepy)" scheme="https://camberbridge.github.io/tags/Twitter-API-Tweepy/"/>
+    
+      <category term="サーバーレスアーキテクチャ" scheme="https://camberbridge.github.io/tags/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%83%AC%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/"/>
     
   </entry>
   

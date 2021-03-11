@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width" />
   <meta name="format-detection" content="telephone=no" />
   
-  <title>キャンベルとヨセミテ</title>
+  <title>Tag: サーバーレスアーキテクチャ | キャンベルとヨセミテ</title>
   <meta name="description" content="Webまわりのいろいろなことを試してそれを公開してみるページ.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="キャンベルとヨセミテ">
-<meta property="og:url" content="https:&#x2F;&#x2F;camberbridge.github.io&#x2F;page&#x2F;2&#x2F;index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;camberbridge.github.io&#x2F;tags&#x2F;%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%83%AC%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3&#x2F;index.html">
 <meta property="og:site_name" content="キャンベルとヨセミテ">
 <meta property="og:description" content="Webまわりのいろいろなことを試してそれを公開してみるページ.">
 <meta property="og:locale" content="ja_JP">
@@ -91,215 +91,36 @@
       <div class="outer">
         <section id="main">
   
-    <a href="https://camberbridge.github.io/2015/08/10/Three-js%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/">
-  <img src="https://ga-beacon.appspot.com/UA-73404675-1/2015/08/10/Three-jsを使ってみた/" width="1" height="1" />
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2021/03/12/%E9%A1%94%E8%AA%8D%E8%AD%98-OpenCV-DNN-%E3%81%A8%E3%83%84%E3%82%A4%E3%83%BC%E3%83%88-Tweepy-%E3%82%92%E3%82%B5%E3%83%BC%E3%83%90%E3%83%AC%E3%82%B9%E7%92%B0%E5%A2%83-GCP-%E3%81%A7%E5%AE%9A%E6%9C%9F%E5%AE%9F%E8%A1%8C/" class="archive-article-date">
+  <time datetime="2021-03-11T15:00:00.000Z" itemprop="datePublished">3月 12</time>
 </a>
-
-<article id="post-Three-jsを使ってみた" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/10/Three-js%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/" class="article-date">
-  <time datetime="2015-08-10T06:24:40.000Z" itemprop="datePublished">2015-08-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/10/Three-js%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/">Three.jsを使ってみた</a>
+      <a class="archive-article-title" href="/2021/03/12/%E9%A1%94%E8%AA%8D%E8%AD%98-OpenCV-DNN-%E3%81%A8%E3%83%84%E3%82%A4%E3%83%BC%E3%83%88-Tweepy-%E3%82%92%E3%82%B5%E3%83%BC%E3%83%90%E3%83%AC%E3%82%B9%E7%92%B0%E5%A2%83-GCP-%E3%81%A7%E5%AE%9A%E6%9C%9F%E5%AE%9F%E8%A1%8C/">顔認識 (OpenCV DNN) とツイート (Tweepy) をサーバーレス環境 (GCP) で定期実行</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-  <li>Three.jsとは
-    WebGLをサポートした3次元CGを描画するためのライブラリ
-    取得は<a href="https://github.com/mrdoob/three.js/" target="_blank" rel="noopener">ここ</a>
-  </li>
-  <li>参考
-    <ul>
-      <li><a href="http://threejs.org/docs/" target="_blank" rel="noopener">three.js/docs</a></li>
-      <li><a href="http://www.yomotsu.net/wp/?p=597" target="_blank" rel="noopener">THREE.jsでWebGL</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="exe-result">実行結果</h3>
-<script>
-window.addEventListener("DOMContentLoaded",function(){
-    //表示領域の確保(HTMLに)
-    let width = "300px";
-    let height = "300px";
-    let container = document.createElement("div");
-    //h3内にdiv生成
-    document.getElementById("exe-result").appendChild(container);
-    container.style.width = width;
-    container.style.height = height;
-    //レンダラ生成
-    let cWidth = container.offsetWidth;
-    let cHeight = container.offsetHeight;
-    let renderer = new THREE.WebGLRenderer({alpha: true, antialias: true});
-    renderer.setSize(cWidth, cHeight);
-    renderer.setClearColor(0xffffff, 1);
-    //生成したdiv内にレンダラが持つDOM要素を追加
-    container.appendChild(renderer.domElement);
-    //シーン生成
-    let scene = new THREE.Scene();
-    //カメラ生成
-    let angle = 20;
-    let near = 1;
-    let far = 10000;
-    let aspect = cWidth/cHeight;
-    let camera = new THREE.PerspectiveCamera(angle, aspect, near, far);
-    camera.position.set(0, 500, 1000);
-    camera.lookAt({x:0, y:0, z:0});
-    //表示する物体生成
-    let geometry = new THREE.SphereGeometry(150, 20, 20);
-    let material = new THREE.MeshBasicMaterial({color: 0x0000ff, wireframe: true});
-    let mesh = new THREE.Mesh(geometry, material);
-    //シーンに物体追加
-    scene.add(mesh);
-    //レンダリング
-    renderer.render(scene, camera);
-    //アニメーション
-    let theta = 0;
-    let rgbR = 0, rgbG = 0, rgbB = 0;
-    let evalR = true, evalG = true, evalB = true;
-    let rotate = function(){
-        theta += 0.01;
-        theta %= 2 * Math.PI;
-        mesh.rotation.y = theta;
-    if(evalR == true){
-      rgbR += 0.01;
-    }else if(evalR == false){
-      rgbR -= 0.01;
-    }
-        if(rgbR == 1){
-          evalR = false;
-        }else if(rgbR == 0){
-      evalR = true;
-    }
-        if(evalG == true){
-          rgbG += 0.02;
-        }else if(evalG == false){
-          rgbG -= 0.02;
-        }
-        if(rgbG >= 1){
-          evalG = false;
-        }else if(rgbG <= 0){
-          evalG = true;
-        }
-        if(evalB == true){
-          rgbB += 0.03;
-        }else if(evalB == false){
-          rgbB -= 0.03;
-        }
-        if(rgbB >= 1){
-          evalB = false;
-        }else if(rgbB <= 0){
-          evalB = true;
-        }
-        material.color.setRGB(rgbR, rgbG, rgbB);
-        renderer.render(scene, camera);
-        requestAnimationFrame(rotate);
-    };
-    rotate();
-});
-</script>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://camberbridge.github.io/2015/08/10/Three-js%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/" data-id="ck478unyu0008nez97rt15ivz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Three-js/" rel="tag">Three.js</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
 </article>
-
-
-
-  
-    <a href="https://camberbridge.github.io/2015/08/09/Hexo%E5%A7%8B%E3%82%81%E3%81%9F/">
-  <img src="https://ga-beacon.appspot.com/UA-73404675-1/2015/08/09/Hexo始めた/" width="1" height="1" />
-</a>
-
-<article id="post-Hexo始めた" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/09/Hexo%E5%A7%8B%E3%82%81%E3%81%9F/" class="article-date">
-  <time datetime="2015-08-09T09:46:00.000Z" itemprop="datePublished">2015-08-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/09/Hexo%E5%A7%8B%E3%82%81%E3%81%9F/">Hexo始めた</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-  <li>hexoとは
-  静的サイトジェネレータの1つ
-  読み方分からん
-  </li>
-  <li>シンタックス
-  [Qiita](http://qiita.com)のようにシンタックスハイライトされる
-  </li>
-  <li>手順
-    <ol>
-      <li> ブログ生成
-      <code>$ hexo new "hoge"</code>
-      source/_posts 配下に .md ファイルが生成される
-      </li>
-      <li>ローカル環境でサーバ起動して確認
-      <code>$ hexo server</code>
-      </li>
-      <li>デプロイ
-      <code>$ hexo deploy -g</code>
-      これは generate の役目も担う
-      </li>
-    </ol>
-  </li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://camberbridge.github.io/2015/08/09/Hexo%E5%A7%8B%E3%82%81%E3%81%9F/" data-id="ck478unyo0003nez99w39c601" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&lt;&lt; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+    </div></section>
   
 
 </section>
